@@ -6,12 +6,43 @@ using UnityEngine.SocialPlatforms;
 
 public class Spawn : MonoBehaviour
 {
+    GameManager gameManager;
     public GameObject monster_5;
+    public GameObject midAirPlan;
+    int score = 0;
+    int goal = 0;
+    bool isBossSpawn = false;
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+        if (gameManager != null)
+        {
+            score = gameManager.score; 
+            goal = gameManager.goal;
+        }
+    }
 
     void Start()
     {
         //StartCoroutine("Spawn_Meteor");
         StartCoroutine("Spawn_Monster_5");
+    }
+
+    private void Update()
+    {
+        score = gameManager.score;
+        if(score > goal && !isBossSpawn)
+        {
+            isBossSpawn = true;
+            Spawn_MidAirPlan();          
+        }
+    }
+
+    void Spawn_MidAirPlan()
+    {
+        Vector3 pos = new Vector3(0, 10, 0);
+        Instantiate(midAirPlan, pos, Quaternion.identity);
     }
 
     //IEnumerator Spawn_Meteor()

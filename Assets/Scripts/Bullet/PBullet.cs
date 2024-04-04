@@ -6,7 +6,10 @@ public class PBullet : MonoBehaviour
 {
     public float Speed = 4.0f;
 
-
+    private void Awake()
+    {
+        
+    }
     void Update()
     {
         //미사일 위쪽방향으로 움직이기
@@ -21,6 +24,13 @@ public class PBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+
+        }
+    }
 
 
 }

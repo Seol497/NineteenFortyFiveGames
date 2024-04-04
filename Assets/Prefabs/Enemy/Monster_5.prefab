@@ -76,7 +76,6 @@ GameObject:
   - component: {fileID: 678515823320561023}
   - component: {fileID: 5015095221644072299}
   - component: {fileID: 3276842832996502764}
-  - component: {fileID: 8758355203433844272}
   m_Layer: 0
   m_Name: Monster_5
   m_TagString: Untagged
@@ -186,8 +185,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c77ce704e3597244b818ded2a3876d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 2
-  Delay: 1
   ms1: {fileID: 4229518686323651198}
   ms2: {fileID: 8986535138378082994}
   bullet: {fileID: 3651901895379378591, guid: f3f2b504a137ce248957f5853a919d1f, type: 3}
@@ -221,7 +218,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.03}
@@ -266,7 +263,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.15}
@@ -282,30 +279,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.53, y: 0.18}
   m_EdgeRadius: 0
---- !u!50 &8758355203433844272
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8116510833649908753}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0

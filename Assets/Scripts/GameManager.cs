@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,38 +30,72 @@ public class GameManager : MonoBehaviour
     private GameObject player;
     #endregion
 
-    private int score = 0;
+    public int score = 0;
+    public int goal = 2000;
+    private int targetScore = 10000;
     private int lifes = 3;
-    private int bombs = 2;
     private int credits = 0;
+    private int bombs = 2;
     
     private bool isDead = false;
     
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift) && credits < 10)
+        if (Input.GetKeyDown(KeyCode.RightShift) && credits < 9 && score >= targetScore)
         {
             creditImage.enabled = true;
             credits += 2;
             creditText.text = $"{credits}";
-        }      
+            targetScore += targetScore;
+        }  
+        if((Input.GetKeyDown(KeyCode.KeypadEnter) && lifes == 0 && credits > 0 ))
+        {
+            ReStart();
+        }
+    }
+
+    public void Score(int num)
+    {
+        score += num;
+        scoreText.text = $"{score}";
+    }
+
+    public void UseBomb()
+    {
+        bombs--;
+        if(bombs == 0)
+            bomb1.enabled = false;
+
+        if(bombs == 1)
+            bomb2.enabled = false;
+    }
+
+
+
+
+    private void ReStart()
+    {
+        credits--;
+        creditText.text = $"{credits}";
+        lifes = 3;
+        Live();
     }
 
     private void Live()
     {
         Instantiate(player, player.transform.position, Quaternion.identity);
-        lifes--;
-        switch (lifes)
+        if(lifes == 1)
         {
-            case 0:
-
-                break;
-            case 1:
-                life1.enabled = false;
-                break;
-            case 2:
-                life2.enabled = false;
-                break;
+            life1.enabled = false;
+        }
+        else if(lifes == 2)
+        {
+            life2.enabled = false;
+        }
+        else if (lifes == 3)
+        {
+            life1.enabled = true;
+            life2.enabled = true;
         }
         bombs = 2;
         bomb1.enabled = true;
@@ -70,20 +105,12 @@ public class GameManager : MonoBehaviour
     public void Dead()
     {
         isDead = true;
+        lifes--;
         if(lifes> 0)
         {
             isDead = false;
-            Live();
+            Invoke("Live", 1);
         }
-    }
-    public void UseBomb()
-    {
-        bombs--;
-        if (bombs > 0)
-        {
-
-        }
-
     }
     private void Awake()
     {

@@ -6,6 +6,9 @@ TagManager:
   tags:
   - PBullet
   - EBullet
+  - Bullet
+  - Skill
+  - Enemy
   layers:
   - Default
   - TransparentFX

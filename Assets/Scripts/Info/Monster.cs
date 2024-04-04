@@ -4,60 +4,18 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public float Speed = 3;
-    public float Delay = 1f;
-    public Transform ms1;
-    public Transform ms2;
-    public GameObject bullet;
-    public GameObject explosion;
-    private bool isVisible = false;
+    protected float health;
+    protected float speed;
+    protected float delay;
+    protected bool isVisible;
 
-    void CreateBullet()
+    protected IEnumerator Hit()
     {
-        Instantiate(bullet, ms1.position, Quaternion.identity);
-        Instantiate(bullet, ms2.position, Quaternion.identity);
-
-        //재귀호출
-        Invoke("CreateBullet", Delay);
-
+        Color currentColor = new Color(200f / 255f, 20f / 255f, 20f / 255f, 255f / 255f);
+        myRenderer.material.color = currentColor;
+        yield return new WaitForSeconds(0.05f);
+        currentColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
+        myRenderer.material.color = currentColor;
+        yield break;
     }
-
-    void Update()
-    {
-        //아래 방향으로 움직여라
-        transform.Translate(Vector2.down * Speed * Time.deltaTime);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(isVisible)
-        {
-            if (collision.gameObject.CompareTag("PBullet"))
-            {
-                GameObject go = Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(go, 1);
-
-                Destroy(collision.gameObject);
-
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnBecameVisible()
-    {
-        isVisible = true;
-        Invoke("CreateBullet", Delay);
-
-    }
-
-
-    private void OnBecameInvisible()
-    {
-        if(transform.position.y < -6)
-        {
-            Destroy(gameObject);
-        }
-    }
-
 }

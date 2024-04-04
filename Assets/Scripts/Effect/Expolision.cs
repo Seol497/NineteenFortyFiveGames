@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Expolision : MonoBehaviour
 {
+    
+    public float scaleX = 0.003f;
+    public float scaleY = 0.003f;
+    public float scaleZ = 0.003f;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +18,17 @@ public class Expolision : MonoBehaviour
     void Update()
     {
         Vector3 currentScale = transform.localScale;
-        currentScale.x += 0.003f;
-        currentScale.y += 0.003f;
-        currentScale.z += 0.003f;
+        currentScale.x += scaleX;
+        currentScale.y += scaleY;
+        currentScale.z += scaleZ;
         transform.localScale = currentScale;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.CompareTag("EBullet"))
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }
