@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 3276842832996502764}
   m_Layer: 0
   m_Name: Monster_5
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -185,10 +185,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c77ce704e3597244b818ded2a3876d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 3651901895379378591, guid: f3f2b504a137ce248957f5853a919d1f, type: 3}
   ms1: {fileID: 4229518686323651198}
   ms2: {fileID: 8986535138378082994}
-  bullet: {fileID: 3651901895379378591, guid: f3f2b504a137ce248957f5853a919d1f, type: 3}
   explosion: {fileID: 2366330206488807987, guid: c7134f91d5380ea41a6b6b43c8d9e38b, type: 3}
+  item_Bomb: {fileID: 8980997322803056528, guid: 1b35733a2bcdb7e4395cfd1b62c47fa5, type: 3}
+  item_PowerUp: {fileID: 5922890379028189810, guid: b682f050c29c0354987c1988bd9aa3b8, type: 3}
 --- !u!61 &5015095221644072299
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -25,10 +25,14 @@ public class Expolision : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("EBullet"))
         {
             Destroy(collision.gameObject);
         }
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
+        {
+            collision.gameObject.GetComponent<Monster>().GetDamage(2000);
+        }
+
     }
 }

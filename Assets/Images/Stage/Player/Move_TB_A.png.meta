@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,154 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Move_TB_A_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 44
+        width: 21
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0fae8bafec12c428d9faf54724db70
+      internalID: 288852938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move_TB_A_1
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 44
+        width: 21
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d29372684cfef54a9417bc961e95640
+      internalID: 1671272899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move_TB_A_2
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 44
+        width: 21
+        height: 31
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97a0adac2ea3988458e8d71b1a0e898e
+      internalID: -876056409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move_TB_A_3
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 37
+        width: 21
+        height: 38
+      alignment: 9
+      pivot: {x: 0.5, y: 0.592}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2ba05a79ba08124f93694c118740ce5
+      internalID: 1777488269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move_TB_A_4
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 24
+        width: 21
+        height: 52
+      alignment: 9
+      pivot: {x: 0.5, y: 0.682}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d020bcc9c8ed674999e43e6fefd6458
+      internalID: -887501565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move_TB_A_5
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 14
+        width: 21
+        height: 61
+      alignment: 9
+      pivot: {x: 0.5, y: 0.762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9bfa97aad38ff409384b760ef7c0ad
+      internalID: -1227495615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Move_TB_A_6
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 0
+        width: 21
+        height: 75
+      alignment: 9
+      pivot: {x: 0.5, y: 0.793}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cfccc43157bb4a48880d09c8e948d3e
+      internalID: 1054933821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +292,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Move_TB_A_0: 288852938
+      Move_TB_A_1: 1671272899
+      Move_TB_A_2: -876056409
+      Move_TB_A_3: 1777488269
+      Move_TB_A_4: -887501565
+      Move_TB_A_5: -1227495615
+      Move_TB_A_6: 1054933821
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

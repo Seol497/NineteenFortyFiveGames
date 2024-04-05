@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -7,24 +8,29 @@ public class Player : MonoBehaviour
     private Renderer myRenderer;
     private Collider2D[] colliders;
 
-    public static Player Instance;
+
 
     public float moveSpeed = 5f;
 
+    private int level = 1;
     private int bomb = 2;
-
+    private int summonCount = 0;
+    private int powerUp= 0;
+    private int helperLv = 0;
 
     private bool isBlinking = false;
     private bool isDead = false;
     private bool isPlaying = false;
     private bool isShoot = false;
+    private bool isDesh = false;
+    private bool isInvincible = true;
 
     Animator ani; //애니메이터를 가져올 변수
 
-    public Transform pos = null;
-    public Transform pos2 = null;
+    public List<Transform> pos;
     public Transform skillPos = null;
-    public GameObject bullet;
+    public List <GameObject> bullet;
+    public List <GameObject> Helper;
     public GameObject skill;
     public GameObject explosion;
 
@@ -34,11 +40,7 @@ public class Player : MonoBehaviour
         myRenderer = GetComponent<Renderer>();
         colliders = GetComponentsInChildren<Collider2D>();
         ani = GetComponent<Animator>();
-
-        foreach (Collider2D collider in colliders)
-        {
-            collider.enabled = false;
-        }
+        level = GameManager.Instance.level;
     }
 
 
@@ -74,23 +76,15 @@ public class Player : MonoBehaviour
         }
         Color originalColor = myRenderer.material.color;
         originalColor.a = 1f;
-        myRenderer.material.color = originalColor;           
-        ColliderOn();
+        myRenderer.material.color = originalColor;
+        isInvincible = false;
         yield break;
-    }
-
-    private void ColliderOn()
-    {
-        foreach (Collider2D collider in colliders)
-        {
-            collider.enabled = true;
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.gameObject.CompareTag("EBullet") && !isDead)
+        if (collision.gameObject.CompareTag("EBullet") && !isDead && !isInvincible)
         {
             isDead = true;
             foreach (Collider2D collider in colliders)
@@ -104,15 +98,64 @@ public class Player : MonoBehaviour
 
             GameManager.Instance.Dead();
             Destroy(gameObject);
-        }     
+        }   
+        if (collision.gameObject.CompareTag("PowerItem"))
+        {
+            GameManager.Instance.EatItem(0, 1);
+            Destroy(collision.gameObject);
+
+        }
+        if (collision.gameObject.CompareTag("BombItem"))
+        {
+            if(bomb < 2)
+            {
+                bomb++;
+                GameManager.Instance.EatItem(1, 0);
+                Destroy(collision.gameObject);
+            }           
+        }
     }
 
     IEnumerator Shoot()
     {
+
         for (int i = 0; i < 3; i++)
         {
-            Instantiate(bullet, pos.position, Quaternion.identity);
-            Instantiate(bullet, pos2.position, Quaternion.identity);
+            if (level == 1 || level == 3)
+                Instantiate(bullet[powerUp], pos[0].position, Quaternion.identity);
+            if (level == 2)
+            {
+                Instantiate(bullet[powerUp], pos[1].position, Quaternion.identity);
+                Instantiate(bullet[powerUp], pos[2].position, Quaternion.identity);
+            }
+            if (level == 4 && summonCount == 0)
+            {
+                Instantiate(Helper[0], pos[3].position, Quaternion.identity);
+                Instantiate(Helper[0], pos[4].position, Quaternion.identity);
+                summonCount++;
+            }
+            if (level == 5 && summonCount == 1)
+            {
+                Instantiate(Helper[0], pos[5].position, Quaternion.identity);
+                Instantiate(Helper[0], pos[6].position, Quaternion.identity);
+                summonCount++;
+            }
+            if (level == 6)
+            {
+                GameObject[] helperObjects = GameObject.FindGameObjectsWithTag("Helper");
+                foreach (GameObject helperObject in helperObjects)
+                {
+                    Destroy(helperObject);
+                }
+                powerUp++;
+                summonCount = 0;                
+                level = 1;
+            }
+            if (powerUp == 2)
+            {
+                helperLv++;
+            }
+
             yield return new WaitForSeconds(0.04f);
         }        
         yield return new WaitForSeconds(0.05f);
@@ -120,10 +163,45 @@ public class Player : MonoBehaviour
         yield break;
     }
 
+    IEnumerator Desh()
+    {
+        isInvincible = true;
+        moveSpeed = 15;
+        yield return new WaitForSeconds(0.2f);
+        moveSpeed = 7.5f;
+        yield return new WaitForSeconds(0.4f);
+        isInvincible = false;
+        ani.SetBool("boost", false);
+        yield return new WaitForSeconds(1f);
+        isDesh = false;
+    }
+
     void Update()
     {
         if (isPlaying)
         {
+
+
+            if (Input.GetKeyDown(KeyCode.S) && !isShoot)
+            {
+                isShoot = true;
+                StartCoroutine(Shoot());
+            }
+
+            if (Input.GetKeyDown(KeyCode.X ) && bomb > 0)
+            {
+                bomb--;
+                Instantiate(skill, skillPos.position, Quaternion.identity);
+                GameManager.Instance.UseBomb();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && !isDesh)
+            {
+                isDesh = true;
+                ani.SetBool("boost", true);
+                StartCoroutine(Desh());
+            }
+
             float moveX = moveSpeed * Time.deltaTime * Input.GetAxis("Horizontal");
             float moveY = moveSpeed * Time.deltaTime * Input.GetAxis("Vertical");
 
@@ -151,19 +229,6 @@ public class Player : MonoBehaviour
                 ani.SetBool("up", false);
             }
 
-
-            if (Input.GetKeyDown(KeyCode.S) && !isShoot)
-            {
-                isShoot = true;
-                StartCoroutine(Shoot());
-            }
-
-            if (Input.GetKeyDown(KeyCode.X ) && bomb > 0)
-            {
-                bomb--;
-                Instantiate(skill, skillPos.position, Quaternion.identity);
-                GameManager.Instance.UseBomb();
-            }
 
             transform.Translate(moveX, moveY, 0);
 

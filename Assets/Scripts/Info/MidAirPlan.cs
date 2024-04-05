@@ -3,21 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEditor.PlayerSettings;
 
-public class MidAirPlan : MonoBehaviour
+public class MidAirPlan : Monster
 {
-    public float health = 10000;
     public float delay1 = 1;
     public float delay2 = 15;
-    public Transform ms1;
-    public Transform ms2;
-    public GameObject bullet;
     public GameObject homming;
     public GameObject hommingEx;
-    public GameObject explosion;
     public GameObject explosion2;
     public GameObject explosion3;
     public GameObject explosion4;
-    private Renderer myRenderer;
     private float pattern;
     private bool isDead;
     private bool skill = false;
@@ -25,8 +19,9 @@ public class MidAirPlan : MonoBehaviour
 
     private void Awake()
     {
+        hp = 15000;
         myRenderer = GetComponent<Renderer>();
-        pattern = health / 2;
+        pattern = hp / 2;
     }
 
     private void Start()
@@ -56,43 +51,24 @@ public class MidAirPlan : MonoBehaviour
         transform.position = new Vector3(transform.position.x, 3.6f, transform.position.z);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public override void GetDamage(int num)
     {
-
-        if (collision.gameObject.CompareTag("PBullet") && !isDead)
+        base.GetDamage(num);
+        if (hp > 0 && !isDead)
         {
-            health -= 20;
-            if (health > 0)
-            {
-                Destroy(collision.gameObject);
-                StartCoroutine(Hit());
-            }
-            if (health <= 0 && !isDead)
-            {
-                StartCoroutine(Dead());
-            }
+            StartCoroutine(Hit());
         }
-        if (collision.gameObject.CompareTag("Bomb") && !isDead)
+        else if (hp <= 0 && !isDead)
         {
-            health -= 500;
-            if (health > 0)
-            {
-                StartCoroutine(Hit());
-            }
-            if (health <= 0 && !isDead)
-            {
-                StartCoroutine(Dead());
-            }
+            StartCoroutine(Dead());
         }
-        if (health < pattern && !skill)
+        if (hp < pattern && !skill)
         {
-            skill = true;
             StartCoroutine(Skill());
         }
-        Debug.Log(health);
     }
 
-    void CreateBullet()
+    protected override void CreateBullet()
     {
         if (!isDead)
         {
@@ -119,6 +95,7 @@ public class MidAirPlan : MonoBehaviour
 
     IEnumerator Skill()
     {
+        skill = true;
         while (!isDead)
         {
             Instantiate(hommingEx, ms1.position, Quaternion.identity);
@@ -132,22 +109,11 @@ public class MidAirPlan : MonoBehaviour
             yield return new WaitForSeconds(10);
         }
         yield break;
-    }
-
-    IEnumerator Hit()
-    {
-        Color currentColor = new Color(200f / 255f, 20f / 255f, 20f / 255f, 255f / 255f);
-        myRenderer.material.color = currentColor;
-        yield return new WaitForSeconds(0.05f);
-        currentColor = new Color(255f / 255f, 255f / 255f, 255f / 255f, 255f / 255f);
-        myRenderer.material.color = currentColor;
-        yield break;
-    }
+    } 
 
     IEnumerator Dead()
     {
         isDead = true;
-        float elapsedTime = 0f;
         for (int i = 0; i < 5; i++)
         {
             Vector2 pos = new Vector2(transform.position.x + 1.751f, transform.position.y + 0.719f);
@@ -166,8 +132,11 @@ public class MidAirPlan : MonoBehaviour
         GameObject go4 = Instantiate(explosion4, pos2, Quaternion.identity);
         Destroy(go4, 1.5f);
         yield return new WaitForSeconds(1f);
+        for (int i = 0; i < 5; i++)
+            SpawnItem(0.5f);
         GameManager.Instance.Score(5000);
         Destroy(gameObject);
+        AllDestory();
         yield break;
     }
 

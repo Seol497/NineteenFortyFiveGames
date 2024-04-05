@@ -1,51 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Timeline;
 using UnityEngine;
 
-public class Monster_5 : MonoBehaviour
-{
-    protected float health;
-    protected float speed;
-    protected float delay;
-    public Transform ms1;
-    public Transform ms2;
-    public GameObject bullet;
-    public GameObject explosion;
-    protected bool isVisible = false;
-    private Renderer myRenderer;
-
-    void CreateBullet()
+public class Monster_5 : Monster
+{      
+    protected override void CreateBullet()
     {
         Instantiate(bullet, ms1.position, Quaternion.identity);
         Instantiate(bullet, ms2.position, Quaternion.identity);
 
         //재귀호출
         Invoke("CreateBullet", delay);
-
     }   
-
-    protected void Dead(Collider2D collision)
-    {
-        GameObject go = Instantiate(explosion, transform.position, Quaternion.identity);
-        Destroy(go, 1);
-
-
-        GameManager.Instance.Score(250);
-        if (collision.gameObject.CompareTag("PBullet"))
-            Destroy(collision.gameObject);
-
-        Destroy(gameObject);
-    }
 
     private void Awake()
     {
         myRenderer = GetComponent<Renderer>();
+        hp = 100;
+        speed = 3;
+        delay = 1;
     }
 
     void Update()
     {
         //아래 방향으로 움직여라
         transform.Translate(Vector2.down * speed * Time.deltaTime);
+    }
+
+    public override void GetDamage(int num)
+    {
+        base.GetDamage(num);
+        if (hp > 0)
+        {
+            StartCoroutine(Hit());
+        }
+        else if (hp <= 0)
+        {
+            SpawnItem(0.05f);
+            Dead(score);
+        }
     }
 
     private void OnBecameVisible()

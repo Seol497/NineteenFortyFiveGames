@@ -10,9 +10,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     #region SerializeField 
-    [Tooltip("UI 관련")]
-    [SerializeField]
-    private Text scoreText;
     [SerializeField]
     private Text creditText;
     [SerializeField]
@@ -25,14 +22,19 @@ public class GameManager : MonoBehaviour
     private Image bomb2;
     [SerializeField]
     private Image creditImage;
+    [SerializeField]
+    private List<Sprite> score_Sprite;
+    [SerializeField]
+    private List<Image> score_Image;
 
     [SerializeField]
     private GameObject player;
     #endregion
+    private int targetScore = 10000;
 
+    public int level = 1;
     public int score = 0;
     public int goal = 2000;
-    private int targetScore = 10000;
     private int lifes = 3;
     private int credits = 0;
     private int bombs = 2;
@@ -57,7 +59,24 @@ public class GameManager : MonoBehaviour
     public void Score(int num)
     {
         score += num;
-        scoreText.text = $"{score}";
+        if (score >= 9999999)
+        {
+            score = 9999999;
+        }
+        string scoreString = score.ToString();
+        for(int i = 0; i < scoreString.Length; i++)
+        {
+            score_Image[i].enabled = true;
+            for(int j = 0; j < 11; j++)
+            {
+                int l = int.Parse(scoreString[i].ToString());
+                if (l == j)
+                {
+                    score_Image[i].sprite = score_Sprite[j];
+                }
+            }
+        }
+        
     }
 
     public void UseBomb()
@@ -68,6 +87,23 @@ public class GameManager : MonoBehaviour
 
         if(bombs == 1)
             bomb2.enabled = false;
+    }
+
+    public void EatItem(int num, int num2)
+    {
+        bombs += num;
+        switch(bombs)
+        {
+            case 1:
+                bomb1.enabled = true;
+                bomb2.enabled = false;
+                break;
+            case 2:
+                bomb1.enabled = true;
+                bomb2.enabled = true;
+                break;
+        }
+        level += num2;
     }
 
 
@@ -104,11 +140,9 @@ public class GameManager : MonoBehaviour
 
     public void Dead()
     {
-        isDead = true;
         lifes--;
         if(lifes> 0)
         {
-            isDead = false;
             Invoke("Live", 1);
         }
     }
@@ -116,14 +150,26 @@ public class GameManager : MonoBehaviour
     {
         if(Instance == null)   //null 체크
             Instance = this;   //자기자신 인스턴스해서 저장
-
     }
 
     void Start()
     {
-        creditText.text = "";
-        creditImage.enabled = false;
-        scoreText.text = $"{score}";
+        if (credits > 0)
+        {
+            creditText.text = $"{credits}";
+            creditImage.enabled = true;
+        }
+        else
+        {
+            creditText.text = "";
+            creditImage.enabled = false;
+        }
+        foreach(Image image in score_Image)
+        {
+            image.enabled = false;
+        }
+        score_Image[0].enabled = true;
+        score_Image[0].sprite = score_Sprite[0];
     }
 
 

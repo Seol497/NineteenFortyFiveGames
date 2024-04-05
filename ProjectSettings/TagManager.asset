@@ -6,9 +6,13 @@ TagManager:
   tags:
   - PBullet
   - EBullet
-  - Bullet
   - Skill
   - Enemy
+  - Bomb
+  - Boss
+  - PowerItem
+  - BombItem
+  - Helper
   layers:
   - Default
   - TransparentFX
