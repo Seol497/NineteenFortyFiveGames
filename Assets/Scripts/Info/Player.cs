@@ -12,11 +12,12 @@ public class Player : MonoBehaviour
 
     public float moveSpeed = 5f;
 
-    private int level = 1;
+    public int level = 1;
     private int bomb = 2;
     private int summonCount = 0;
-    private int powerUp= 0;
+    public int powerUp= 0;
     private int helperLv = 0;
+    private int bulletLv = 0;
 
     private bool isBlinking = false;
     private bool isDead = false;
@@ -30,7 +31,7 @@ public class Player : MonoBehaviour
     public List<Transform> pos;
     public Transform skillPos = null;
     public List <GameObject> bullet;
-    public List <GameObject> Helper;
+    public List<GameObject> Helper;
     public GameObject skill;
     public GameObject explosion;
 
@@ -95,15 +96,23 @@ public class Player : MonoBehaviour
             Destroy(go, 1);
 
             Destroy(collision.gameObject);
+            GameObject[] helpers = GameObject.FindGameObjectsWithTag("Helper");
+            foreach (GameObject helper in helpers)
+            {
+                Destroy(helper);
+            }
 
             GameManager.Instance.Dead();
             Destroy(gameObject);
         }   
         if (collision.gameObject.CompareTag("PowerItem"))
         {
-            GameManager.Instance.EatItem(0, 1);
-            Destroy(collision.gameObject);
-
+            if (powerUp != 5 || level != 4)
+            {
+                GameManager.Instance.EatItem(0, 1);
+                LevelUp();
+                Destroy(collision.gameObject);
+            }
         }
         if (collision.gameObject.CompareTag("BombItem"))
         {
@@ -118,44 +127,14 @@ public class Player : MonoBehaviour
 
     IEnumerator Shoot()
     {
-
         for (int i = 0; i < 3; i++)
         {
-            if (level == 1 || level == 3)
-                Instantiate(bullet[powerUp], pos[0].position, Quaternion.identity);
-            if (level == 2)
+            Instantiate(bullet[bulletLv + 1], pos[0].position, Quaternion.identity);
+            if (level >= 2)
             {
-                Instantiate(bullet[powerUp], pos[1].position, Quaternion.identity);
-                Instantiate(bullet[powerUp], pos[2].position, Quaternion.identity);
+                Instantiate(bullet[bulletLv], pos[1].position, Quaternion.identity);
+                Instantiate(bullet[bulletLv], pos[2].position, Quaternion.identity);
             }
-            if (level == 4 && summonCount == 0)
-            {
-                Instantiate(Helper[0], pos[3].position, Quaternion.identity);
-                Instantiate(Helper[0], pos[4].position, Quaternion.identity);
-                summonCount++;
-            }
-            if (level == 5 && summonCount == 1)
-            {
-                Instantiate(Helper[0], pos[5].position, Quaternion.identity);
-                Instantiate(Helper[0], pos[6].position, Quaternion.identity);
-                summonCount++;
-            }
-            if (level == 6)
-            {
-                GameObject[] helperObjects = GameObject.FindGameObjectsWithTag("Helper");
-                foreach (GameObject helperObject in helperObjects)
-                {
-                    Destroy(helperObject);
-                }
-                powerUp++;
-                summonCount = 0;                
-                level = 1;
-            }
-            if (powerUp == 2)
-            {
-                helperLv++;
-            }
-
             yield return new WaitForSeconds(0.04f);
         }        
         yield return new WaitForSeconds(0.05f);
@@ -163,6 +142,40 @@ public class Player : MonoBehaviour
         yield break;
     }
 
+    void LevelUp()
+    {
+        level++;
+        if (level >= 5 && powerUp < 5)
+        {
+            GameObject[] helperObjects = GameObject.FindGameObjectsWithTag("Helper");
+            foreach (GameObject helperObject in helperObjects)
+            {
+                Destroy(helperObject);
+            }
+            powerUp++;
+            bulletLv++;
+            if (powerUp >= 3)
+                bulletLv++;
+            if (powerUp == 4)
+            {
+                helperLv = 4;
+            }
+            summonCount = 0;
+            level = 1;
+        }
+        if (level >= 3 && summonCount == 0)
+        {
+            Instantiate(Helper[0 + helperLv], pos[3].position, Quaternion.identity);
+            Instantiate(Helper[1 + helperLv], pos[3].position, Quaternion.identity);
+            summonCount++;
+        }
+        if (level >= 4 && summonCount == 1)
+        {
+            Instantiate(Helper[2 + helperLv], pos[3].position, Quaternion.identity);
+            Instantiate(Helper[3 + helperLv], pos[3].position, Quaternion.identity);
+            summonCount++;
+        }
+    }
     IEnumerator Desh()
     {
         isInvincible = true;

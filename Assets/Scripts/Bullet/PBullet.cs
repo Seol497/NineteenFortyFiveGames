@@ -5,6 +5,7 @@ using UnityEngine;
 public class PBullet : MonoBehaviour
 {
     public float Speed = 4.0f;
+    public int damage = 10;
 
     private void Awake()
     {
@@ -28,7 +29,7 @@ public class PBullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
         {
-            collision.gameObject.GetComponent<Monster>().GetDamage(10);
+            collision.gameObject.GetComponent<Monster>().GetDamage(damage);
             Destroy(gameObject);
         }
     }

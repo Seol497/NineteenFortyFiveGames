@@ -7,7 +7,24 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     //싱글톤
-    public static GameManager Instance;
+    private static GameManager instance;
+
+    public static GameManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject("GameManager");
+                    instance = obj.AddComponent<GameManager>();
+                }
+            }
+            return instance;
+        }
+    }
 
     #region SerializeField 
     [SerializeField]
@@ -30,7 +47,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject player;
     #endregion
-    private int targetScore = 10000;
+    private int targetScore = 5000;
 
     public int level = 1;
     public int score = 0;
@@ -46,7 +63,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightShift) && credits < 9 && score >= targetScore)
         {
             creditImage.enabled = true;
-            credits += 2;
+            credits++;
             creditText.text = $"{credits}";
             targetScore += targetScore;
         }  
@@ -119,6 +136,8 @@ public class GameManager : MonoBehaviour
 
     private void Live()
     {
+        level = 1;
+        bombs = 2;
         Instantiate(player, player.transform.position, Quaternion.identity);
         if(lifes == 1)
         {
@@ -133,7 +152,6 @@ public class GameManager : MonoBehaviour
             life1.enabled = true;
             life2.enabled = true;
         }
-        bombs = 2;
         bomb1.enabled = true;
         bomb2.enabled = true;
     }
@@ -148,8 +166,8 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
-        if(Instance == null)   //null 체크
-            Instance = this;   //자기자신 인스턴스해서 저장
+        if(instance == null)   //null 체크
+            instance = this;   //자기자신 인스턴스해서 저장
     }
 
     void Start()

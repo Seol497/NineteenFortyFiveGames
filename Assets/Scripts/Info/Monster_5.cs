@@ -18,7 +18,7 @@ public class Monster_5 : Monster
     {
         myRenderer = GetComponent<Renderer>();
         hp = 100;
-        speed = 3;
+        speed = 2;
         delay = 1;
     }
 

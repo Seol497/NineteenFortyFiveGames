@@ -679,7 +679,7 @@ MonoBehaviour:
   player: {fileID: 7157102506943936441, guid: a16935191f477884b954a4270c0c5cb5, type: 3}
   level: 1
   score: 0
-  goal: 2000
+  goal: 5000
 --- !u!1 &499760630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1078,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 732546706}
   m_CullTransparentMesh: 1
---- !u!1001 &859623081
+--- !u!1001 &843918305
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898bb7f73fb152e4581e2246f80de60b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollSpeed: 0.01
+  scrollSpeed: 0.005
 --- !u!1 &1481718005
 GameObject:
   m_ObjectHideFlags: 0
@@ -2138,4 +2138,4 @@ SceneRoots:
   - {fileID: 1754951946}
   - {fileID: 403572764}
   - {fileID: 1370199035}
-  - {fileID: 859623081}
+  - {fileID: 843918305}
