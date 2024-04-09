@@ -12,6 +12,7 @@ public class Spawn : MonoBehaviour
     int score = 0;
     int goal = 0;
     bool isBossSpawn = false;
+    float delay = 1f;
 
     private void Awake()
     {
@@ -42,6 +43,7 @@ public class Spawn : MonoBehaviour
     void Spawn_MidAirPlan()
     {
         Vector3 pos = new Vector3(0, 10, 0);
+        delay = 2.5f;
         Instantiate(midAirPlan, pos, Quaternion.identity);
     }
 
@@ -122,7 +124,7 @@ public class Spawn : MonoBehaviour
         {
             Vector3 pos = new Vector3(Random.Range(-2.45f, 2.45f), 10, 0);
             Instantiate(monster_5, pos, Quaternion.identity);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(delay);
         }
     }
 }

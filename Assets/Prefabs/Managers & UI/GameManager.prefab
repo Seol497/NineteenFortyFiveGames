@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4143034431864327696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2058467971031625001}
+  - component: {fileID: 7204478766723542501}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2058467971031625001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143034431864327696}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7204478766723542501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4143034431864327696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76083344914bf43439fc9a58f1ddd49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uI: {fileID: 0}
+  deadScene: {fileID: 0}
+  playScene: {fileID: 0}
+  creditText1: {fileID: 0}
+  creditText2: {fileID: 0}
+  countDown: {fileID: 0}
+  life1: {fileID: 0}
+  life2: {fileID: 0}
+  bomb1: {fileID: 0}
+  bomb2: {fileID: 0}
+  creditImage: {fileID: 0}
+  score_Sprite:
+  - {fileID: -1931505310, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -1438851741, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -236696013, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -1042193328, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: 676269008, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -314140274, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -57872612, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: 1171668749, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -1687268945, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  - {fileID: -1592478366, guid: 828d3602ff83fac47abcc4c5b1d02e95, type: 3}
+  score_Image:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  item_PowerUp: {fileID: 5922890379028189810, guid: b682f050c29c0354987c1988bd9aa3b8, type: 3}
+  item_Bomb: {fileID: 8980997322803056528, guid: 1b35733a2bcdb7e4395cfd1b62c47fa5, type: 3}
+  nextSceneName: Stage2
+  player: {fileID: 7157102506943936441, guid: a16935191f477884b954a4270c0c5cb5, type: 3}
+  score: 0
+  goal: 5000
+  level: 4
+  powerUp: 5
+  bombs: 2

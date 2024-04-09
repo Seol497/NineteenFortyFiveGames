@@ -13,11 +13,11 @@ public class Player : MonoBehaviour
     public float moveSpeed = 5f;
 
     public int level = 1;
+    public int powerUp= 0;
+    public int bulletLv = 0;
     private int bomb = 2;
     private int summonCount = 0;
-    public int powerUp= 0;
     private int helperLv = 0;
-    private int bulletLv = 0;
 
     private bool isBlinking = false;
     private bool isDead = false;
@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     private bool isShoot = false;
     private bool isDesh = false;
     private bool isInvincible = true;
+    private bool isEnd = false;
 
     Animator ani; //애니메이터를 가져올 변수
 
@@ -36,19 +37,66 @@ public class Player : MonoBehaviour
     public GameObject explosion;
 
 
-    void Awake()
+    IEnumerator Shoot()
     {
-        myRenderer = GetComponent<Renderer>();
-        colliders = GetComponentsInChildren<Collider2D>();
-        ani = GetComponent<Animator>();
-        level = GameManager.Instance.level;
+        for (int i = 0; i < 3; i++)
+        {
+            Instantiate(bullet[bulletLv + 1], pos[0].position, Quaternion.identity);
+            if (level >= 2)
+            {
+                Instantiate(bullet[bulletLv], pos[1].position, Quaternion.identity);
+                Instantiate(bullet[bulletLv], pos[2].position, Quaternion.identity);
+            }
+            yield return new WaitForSeconds(0.04f);
+        }        
+        yield return new WaitForSeconds(0.05f);
+        isShoot = false;
+        yield break;
     }
 
-
-    void Start()
+    IEnumerator Desh()
     {
-        Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
-        StartCoroutine(BlinkAlpha());
+        isInvincible = true;
+        moveSpeed = 15;
+        yield return new WaitForSeconds(0.2f);
+        moveSpeed = 7.5f;
+        yield return new WaitForSeconds(0.4f);
+        isInvincible = false;
+        ani.SetBool("boost", false);
+        yield return new WaitForSeconds(1f);
+        isDesh = false;
+    }
+
+    void LevelUp()
+    {
+        if (level >= 5 && powerUp != 5)
+        {
+            GameObject[] helperObjects = GameObject.FindGameObjectsWithTag("Helper");
+            foreach (GameObject helperObject in helperObjects)
+            {
+                Destroy(helperObject);
+            }
+            powerUp++;
+            bulletLv++;
+            if (powerUp >= 3)
+                bulletLv++;
+            if (powerUp == 4)
+                helperLv = 4;
+            summonCount = 0;
+            level = 1;
+        }
+        if (level >= 3 && summonCount == 0)
+        {
+            Instantiate(Helper[0 + helperLv], pos[3].position, Quaternion.identity);
+            Instantiate(Helper[1 + helperLv], pos[3].position, Quaternion.identity);
+            summonCount++;
+        }
+        if (level >= 4 && summonCount == 1)
+        {
+            Instantiate(Helper[2 + helperLv], pos[3].position, Quaternion.identity);
+            Instantiate(Helper[3 + helperLv], pos[3].position, Quaternion.identity);
+            summonCount++;
+        }
     }
 
     IEnumerator BlinkAlpha()
@@ -80,6 +128,25 @@ public class Player : MonoBehaviour
         myRenderer.material.color = originalColor;
         isInvincible = false;
         yield break;
+    }  
+
+    public IEnumerator End()
+    {
+        yield return new WaitForSeconds(2.5f);
+        isEnd = true;
+        ani.SetBool("left", false);
+        ani.SetBool("right", false);
+        ani.SetBool("up", false);
+        yield return new WaitForSeconds(1);
+        ani.SetBool("up", true);
+        while (transform.position.y < 8)
+        {
+            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.5f);
+        GameManager.Instance.LoadNextScene();
+        yield break;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -102,6 +169,7 @@ public class Player : MonoBehaviour
                 Destroy(helper);
             }
 
+            GameManager.Instance.SpawnItem();
             GameManager.Instance.Dead();
             Destroy(gameObject);
         }   
@@ -110,6 +178,7 @@ public class Player : MonoBehaviour
             if (powerUp != 5 || level != 4)
             {
                 GameManager.Instance.EatItem(0, 1);
+                level++;
                 LevelUp();
                 Destroy(collision.gameObject);
             }
@@ -125,73 +194,36 @@ public class Player : MonoBehaviour
         }
     }
 
-    IEnumerator Shoot()
+    void Awake()
     {
-        for (int i = 0; i < 3; i++)
-        {
-            Instantiate(bullet[bulletLv + 1], pos[0].position, Quaternion.identity);
-            if (level >= 2)
-            {
-                Instantiate(bullet[bulletLv], pos[1].position, Quaternion.identity);
-                Instantiate(bullet[bulletLv], pos[2].position, Quaternion.identity);
-            }
-            yield return new WaitForSeconds(0.04f);
-        }        
-        yield return new WaitForSeconds(0.05f);
-        isShoot = false;
-        yield break;
+        myRenderer = GetComponent<Renderer>();
+        colliders = GetComponentsInChildren<Collider2D>();
+        ani = GetComponent<Animator>();
+        level = GameManager.Instance.level;
+        powerUp = GameManager.Instance.powerUp;
+        bomb = GameManager.Instance.bombs;
+        for(int i = 0; i < powerUp - 1; i++)
+            bulletLv += 2;    
+        if (powerUp == 1)
+            bulletLv = 1;
+        if (powerUp >= 4)
+            helperLv = 4;
+        LevelUp();
     }
 
-    void LevelUp()
+    void Start()
     {
-        level++;
-        if (level >= 5 && powerUp < 5)
-        {
-            GameObject[] helperObjects = GameObject.FindGameObjectsWithTag("Helper");
-            foreach (GameObject helperObject in helperObjects)
-            {
-                Destroy(helperObject);
-            }
-            powerUp++;
-            bulletLv++;
-            if (powerUp >= 3)
-                bulletLv++;
-            if (powerUp == 4)
-            {
-                helperLv = 4;
-            }
-            summonCount = 0;
-            level = 1;
-        }
-        if (level >= 3 && summonCount == 0)
-        {
-            Instantiate(Helper[0 + helperLv], pos[3].position, Quaternion.identity);
-            Instantiate(Helper[1 + helperLv], pos[3].position, Quaternion.identity);
-            summonCount++;
-        }
-        if (level >= 4 && summonCount == 1)
-        {
-            Instantiate(Helper[2 + helperLv], pos[3].position, Quaternion.identity);
-            Instantiate(Helper[3 + helperLv], pos[3].position, Quaternion.identity);
-            summonCount++;
-        }
-    }
-    IEnumerator Desh()
-    {
-        isInvincible = true;
-        moveSpeed = 15;
-        yield return new WaitForSeconds(0.2f);
-        moveSpeed = 7.5f;
-        yield return new WaitForSeconds(0.4f);
-        isInvincible = false;
-        ani.SetBool("boost", false);
-        yield return new WaitForSeconds(1f);
-        isDesh = false;
+        StartCoroutine(BlinkAlpha());
     }
 
     void Update()
     {
-        if (isPlaying)
+        MoveMent();
+    }
+
+    void MoveMent()
+    {
+        if (isPlaying && !isEnd)
         {
 
 
@@ -255,4 +287,5 @@ public class Player : MonoBehaviour
 
         }
     }
+
 }

@@ -19,7 +19,7 @@ public class Monster_5 : Monster
         myRenderer = GetComponent<Renderer>();
         hp = 100;
         speed = 2;
-        delay = 1;
+        delay = 1.5f;
     }
 
     void Update()
@@ -37,7 +37,7 @@ public class Monster_5 : Monster
         }
         else if (hp <= 0)
         {
-            SpawnItem(0.05f);
+            SpawnItem(0.09f);
             Dead(score);
         }
     }

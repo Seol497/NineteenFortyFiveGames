@@ -15,12 +15,15 @@ public class Bomb : MonoBehaviour
 
     void Update()
     {
-        Vector3 currentScale = transform.localScale;
-        currentScale.x -= 0.002f;
-        currentScale.y -= 0.002f;
-        currentScale.z -= 0.002f;       
-        transform.localScale = currentScale;
-        transform.Translate(Vector2.up * Speed * Time.deltaTime);
+        if (Time.timeScale != 0)
+        {
+            Vector3 currentScale = transform.localScale;
+            currentScale.x -= 0.002f;
+            currentScale.y -= 0.002f;
+            currentScale.z -= 0.002f;
+            transform.localScale = currentScale;
+            transform.Translate(Vector2.up * Speed * Time.deltaTime);
+        }
     }
 
     IEnumerator Expolision()

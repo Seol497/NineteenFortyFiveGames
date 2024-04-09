@@ -47,7 +47,21 @@ public abstract class Monster : MonoBehaviour
         foreach (GameObject enemy in enemyList)
         {
             enemy.gameObject.GetComponent<Monster>().GetDamage(9999999);
-        } 
+        }
+        GameObject player = null;
+        Player playerController = null;
+        while(player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null)
+            {
+                playerController = player.GetComponent<Player>();
+            }               
+        }
+        if (playerController != null)
+        {
+            playerController.StartCoroutine(playerController.End());
+        }
     }
 
     public virtual void GetDamage(int num)

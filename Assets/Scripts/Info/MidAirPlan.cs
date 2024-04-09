@@ -133,7 +133,7 @@ public class MidAirPlan : Monster
         Destroy(go4, 1.5f);
         yield return new WaitForSeconds(1f);
         for (int i = 0; i < 5; i++)
-            SpawnItem(0.5f);
+            SpawnItem(0.7f);
         GameManager.Instance.Score(5000);
         Destroy(gameObject);
         AllDestory();
