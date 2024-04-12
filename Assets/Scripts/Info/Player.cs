@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
 
 
-    private float moveSpeed = 5f;
+    private float moveSpeed = 5;
 
     private int level = 1;
     private int powerUp= 0;
@@ -55,10 +55,13 @@ public class Player : MonoBehaviour
 
     IEnumerator Desh()
     {
+        ani.SetBool("boost", true);
         isInvincible = true;
         moveSpeed = 15;
+        yield return new WaitForSeconds(0.15f);
+        moveSpeed = 7;
         yield return new WaitForSeconds(0.2f);
-        moveSpeed = 7.5f;
+        moveSpeed = 5;
         yield return new WaitForSeconds(0.4f);
         isInvincible = false;
         ani.SetBool("boost", false);
@@ -149,9 +152,8 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        
-        if (collision.gameObject.CompareTag("EBullet") && !isDead && !isInvincible)
+    {       
+        if ((collision.gameObject.CompareTag("EBullet") || collision.gameObject.CompareTag("EBomb")) && !isDead && !isInvincible)
         {
             isDead = true;
             foreach (Collider2D collider in colliders)
@@ -161,31 +163,8 @@ public class Player : MonoBehaviour
             GameObject go = Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(go, 1);
 
-            Destroy(collision.gameObject);
-            GameObject[] helpers = GameObject.FindGameObjectsWithTag("Helper");
-            foreach (GameObject helper in helpers)
-            {
-                Destroy(helper);
-            }
-
-            GameManager.Instance.SpawnItem();
-            GameManager.Instance.Dead();
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.CompareTag("EBomb") && !isDead && !isInvincible)
-        {
-            isDead = true;
-            foreach (Collider2D collider in colliders)
-            {
-                collider.enabled = true;
-            }
-            GameObject go = Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(go, 1);
-            GameObject[] helpers = GameObject.FindGameObjectsWithTag("Helper");
-            foreach (GameObject helper in helpers)
-            {
-                Destroy(helper);
-            }
+            if (collision.gameObject.CompareTag("EBullet"))
+                Destroy(collision.gameObject);
 
             GameManager.Instance.SpawnItem();
             GameManager.Instance.Dead();
@@ -261,8 +240,7 @@ public class Player : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space) && !isDesh)
             {
-                isDesh = true;
-                ani.SetBool("boost", true);
+                isDesh = true;                
                 StartCoroutine(Desh());
             }
 
@@ -303,7 +281,6 @@ public class Player : MonoBehaviour
             viewPos.y = Mathf.Clamp01(viewPos.y); //y값을 0이상, 1이하로 제한한다.
             Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos);//다시월드좌표로 변환
             transform.position = worldPos; //좌표를 적용한다.
-
         }
     }
 

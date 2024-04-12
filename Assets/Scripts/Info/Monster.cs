@@ -7,7 +7,6 @@ public abstract class Monster : MonoBehaviour
     protected float hp = 100;
     protected float speed = 1;
     protected float delay = 1;
-    protected bool isVisible = false;
     protected float percentage = 0.3f;
     protected Renderer myRenderer;
 

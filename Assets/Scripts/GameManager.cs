@@ -184,10 +184,10 @@ public class GameManager : MonoBehaviour
         float percentage = level * powerUp;
         float randomValue = Random.Range(0, percentage);
 
-        for (int i = 0; i < randomValue; i++)
+        for (int i = 0; i < randomValue * 1.5f; i++)
             Instantiate(item_PowerUp, transform.position, Quaternion.identity);
 
-        for (int i = 0; i < randomValue / 2; i++)
+        for (int i = 0; i < randomValue / 3; i++)
             Instantiate(item_Bomb, transform.position, Quaternion.identity);
 
 
@@ -228,6 +228,11 @@ public class GameManager : MonoBehaviour
     public void Dead()
     {
         lifes--;
+        GameObject[] helpers = GameObject.FindGameObjectsWithTag("Helper");
+        foreach (GameObject helper in helpers)
+        {
+            Destroy(helper);
+        }
         if (lifes > 0)
         {
             Invoke("Live", 1);

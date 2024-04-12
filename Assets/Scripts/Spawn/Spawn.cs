@@ -13,7 +13,9 @@ public class Spawn : MonoBehaviour
     public GameObject midAirPlan;
     public bool stage1 = false;
     public bool stage2 = false;
+    public bool countDown = false;
 
+    public float countdownTimer = 100f;
     int score = 0;
     int goal = 0;
     float delay = 1f;
@@ -40,10 +42,12 @@ public class Spawn : MonoBehaviour
             StartCoroutine(Spawn_Monster_5());
             StartCoroutine(Spawn_Monster_5_H());
         }
-
         else if (stage1)
             StartCoroutine(Spawn_Monster_5());
-
+        if (countDown)
+        {
+            StartCoroutine(OffSpawnManager());
+        }
     }
 
     private void Update()
@@ -54,6 +58,12 @@ public class Spawn : MonoBehaviour
             isBossSpawn = true;
             SpawnBoss();          
         }
+    }
+
+    private IEnumerator OffSpawnManager()
+    {
+        yield return new WaitForSeconds(countdownTimer);
+        gameObject.SetActive(false);
     }
 
     void SpawnBoss()

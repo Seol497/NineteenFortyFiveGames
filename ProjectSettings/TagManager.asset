@@ -8,7 +8,6 @@ TagManager:
   - EBullet
   - Skill
   - Enemy
-  - Bomb
   - Boss
   - PowerItem
   - BombItem

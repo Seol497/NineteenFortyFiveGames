@@ -7,12 +7,24 @@
       "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\info\\playerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\playerhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\other\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\other\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|",
-      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:classdiagram1.cd||{59B0B277-7DDF-4E36-A3ED-02DAC5B9E2FA}|"
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\effect\\expolision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effect\\expolision.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\event\\stage02event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\event\\stage02event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\info\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\info\\monster_5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\monster_5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,32 +38,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
               "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
-              "ViewState": "AQIAAHoAAAAAAAAAAAAiwE0AAAAAAAAA",
+              "ViewState": "AQIAAKwAAAAAAAAAAAAAwAEBAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-03T06:08:55.377Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ClassDiagram1.cd",
-              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\ClassDiagram1.cd",
-              "RelativeDocumentMoniker": "ClassDiagram1.cd",
-              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\ClassDiagram1.cd*",
-              "RelativeToolTip": "ClassDiagram1.cd*",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000463|",
-              "WhenOpened": "2024-04-12T04:13:01.307Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -63,22 +62,74 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Player.cs",
               "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Player.cs",
               "RelativeToolTip": "Assets\\Scripts\\Info\\Player.cs",
-              "ViewState": "AQIAAEkAAAAAAAAAAAAAAF4AAABUAAAA",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAgwN4AAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T04:17:05.741Z",
+              "WhenOpened": "2024-04-12T08:42:14.873Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PlayerHelper.cs",
-              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\PlayerHelper.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\PlayerHelper.cs",
-              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\PlayerHelper.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Info\\PlayerHelper.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAYAAAA",
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\other\\Item.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\other\\Item.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\other\\Item.cs",
+              "RelativeToolTip": "Assets\\Scripts\\other\\Item.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-12T04:17:04.446Z",
+              "WhenOpened": "2024-04-12T08:42:04.282Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Expolision.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Effect\\Expolision.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Effect\\Expolision.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Effect\\Expolision.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Effect\\Expolision.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAcwBQAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T08:41:35.584Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Monster.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monster.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Monster.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monster.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Info\\Monster.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T08:41:25.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Monster_5.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monster_5.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Monster_5.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monster_5.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Info\\Monster_5.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T08:41:23.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Stage02Event.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Event\\Stage02Event.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Event\\Stage02Event.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Event\\Stage02Event.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Event\\Stage02Event.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAcwFIAAABKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-12T06:47:27.761Z",
               "EditorCaption": ""
             }
           ]

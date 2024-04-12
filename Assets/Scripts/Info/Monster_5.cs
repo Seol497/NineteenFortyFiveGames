@@ -46,7 +46,7 @@ public class Monster_5 : Monster
 
     private void OnBecameVisible()
     {
-        isVisible = true;
+
         Invoke("CreateBullet", delay);
 
     }

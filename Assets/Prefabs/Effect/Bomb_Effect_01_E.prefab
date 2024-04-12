@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8476576376863956058}
   m_Layer: 0
   m_Name: Bomb_Effect_01_E
-  m_TagString: EBullet
+  m_TagString: EBomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
