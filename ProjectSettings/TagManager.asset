@@ -13,6 +13,7 @@ TagManager:
   - PowerItem
   - BombItem
   - Helper
+  - EBomb
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9085983050495859877
 Transform:
   m_ObjectHideFlags: 0
@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monster_5: {fileID: 8116510833649908753, guid: 962c3e0c3a70f0f41836542daacc5f9e, type: 3}
+  monster_5_H: {fileID: 8116510833649908753, guid: 148873912f022464face3945fbf5a0fd, type: 3}
   midAirPlan: {fileID: 6735103670286039342, guid: cea6e376ff2e5ad439c0105dd3e26bf4, type: 3}

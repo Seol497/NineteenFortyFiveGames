@@ -106,7 +106,7 @@ public class MidAirPlan : Monster
             yield return new WaitForSeconds(1);
             Instantiate(hommingEx, ms1.position, Quaternion.identity);
             Instantiate(hommingEx, ms2.position, Quaternion.identity);
-            yield return new WaitForSeconds(10);
+            yield return new WaitForSeconds(12);
         }
         yield break;
     } 

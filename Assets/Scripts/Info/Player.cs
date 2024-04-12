@@ -10,22 +10,21 @@ public class Player : MonoBehaviour
 
 
 
-    public float moveSpeed = 5f;
+    private float moveSpeed = 5f;
 
-    public int level = 1;
-    public int powerUp= 0;
-    public int bulletLv = 0;
+    private int level = 1;
+    private int powerUp= 0;
+    private int bulletLv = 0;
     private int bomb = 2;
     private int summonCount = 0;
     private int helperLv = 0;
 
     private bool isBlinking = false;
     private bool isDead = false;
-    private bool isPlaying = false;
+    public bool isPlaying = false;
     private bool isShoot = false;
     private bool isDesh = false;
     private bool isInvincible = true;
-    private bool isEnd = false;
 
     Animator ani; //애니메이터를 가져올 변수
 
@@ -133,7 +132,7 @@ public class Player : MonoBehaviour
     public IEnumerator End()
     {
         yield return new WaitForSeconds(2.5f);
-        isEnd = true;
+        isPlaying = false;
         ani.SetBool("left", false);
         ani.SetBool("right", false);
         ani.SetBool("up", false);
@@ -172,7 +171,27 @@ public class Player : MonoBehaviour
             GameManager.Instance.SpawnItem();
             GameManager.Instance.Dead();
             Destroy(gameObject);
-        }   
+        }
+        if (collision.gameObject.CompareTag("EBomb") && !isDead && !isInvincible)
+        {
+            isDead = true;
+            foreach (Collider2D collider in colliders)
+            {
+                collider.enabled = true;
+            }
+            GameObject go = Instantiate(explosion, transform.position, Quaternion.identity);
+            Destroy(go, 1);
+            GameObject[] helpers = GameObject.FindGameObjectsWithTag("Helper");
+            foreach (GameObject helper in helpers)
+            {
+                Destroy(helper);
+            }
+
+            GameManager.Instance.SpawnItem();
+            GameManager.Instance.Dead();
+            Destroy(gameObject);
+        }
+
         if (collision.gameObject.CompareTag("PowerItem"))
         {
             if (powerUp != 5 || level != 4)
@@ -223,7 +242,7 @@ public class Player : MonoBehaviour
 
     void MoveMent()
     {
-        if (isPlaying && !isEnd)
+        if (isPlaying)
         {
 
 

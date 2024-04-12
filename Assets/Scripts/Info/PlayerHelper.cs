@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHelper : MonoBehaviour
@@ -12,16 +13,19 @@ public class PlayerHelper : MonoBehaviour
 
     public float followSpeed = 5f;
 
+    private GameObject player = null;
+    private Player playerInfo = null;
     private Transform playerTransform;
     private bool isShoot = false;
+    private bool isPlay = false;
 
     private void Start()
     {
-        // Player를 찾아서 Transform으로 등록
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
+            playerInfo = player.GetComponent<Player>();
         }
         else
         {
@@ -30,13 +34,14 @@ public class PlayerHelper : MonoBehaviour
     }
     private void Update()
     {
+        isPlay = playerInfo.isPlaying;
         // Player의 위치로부터 offsetX, offsetY 만큼 이동한 위치로 이동
         if (playerTransform != null)
         {
             Vector3 targetPosition = new Vector3(playerTransform.position.x + offsetX, playerTransform.position.y + offsetY, transform.position.z);
             transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.S) && !isShoot)
+        if (Input.GetKeyDown(KeyCode.S) && !isShoot && isPlay)
         {
             isShoot = true;
             StartCoroutine(Shoot());

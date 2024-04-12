@@ -8,6 +8,7 @@ public class Expolision : MonoBehaviour
     public float scaleX = 0.003f;
     public float scaleY = 0.003f;
     public float scaleZ = 0.003f;
+    public bool isP = true;
 
 
     void Start()
@@ -29,14 +30,16 @@ public class Expolision : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EBullet"))
+        if (isP)
         {
-            Destroy(collision.gameObject);
+            if (collision.gameObject.CompareTag("EBullet"))
+            {
+                Destroy(collision.gameObject);
+            }
+            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
+            {
+                collision.gameObject.GetComponent<Monster>().GetDamage(2000);
+            }
         }
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
-        {
-            collision.gameObject.GetComponent<Monster>().GetDamage(2000);
-        }
-
     }
 }

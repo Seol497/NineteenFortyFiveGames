@@ -21,17 +21,23 @@ public class SHomming : MonoBehaviour
             {
                 return;
             }
+            //A - B  -> A를 바라보는 벡터나온다.
+            dir = target.transform.position - transform.position;
+            //방향벡터만 구하기 단위벡터 1의크기로 만든다.
+            dirNo = dir.normalized;
         }
 
-        //A - B  -> A를 바라보는 벡터나온다.
-        dir = target.transform.position - transform.position;
-        //방향벡터만 구하기 단위벡터 1의크기로 만든다.
-        dirNo = dir.normalized;
     }
 
     void Update()
     {
-
-        transform.Translate(dirNo * speed * Time.deltaTime);
+        if (target != null)
+            transform.Translate(dirNo * speed * Time.deltaTime);
+        else
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+    }
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

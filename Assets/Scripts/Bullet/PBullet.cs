@@ -21,7 +21,6 @@ public class PBullet : MonoBehaviour
     //화면밖으로 나갈경우
     private void OnBecameInvisible()
     {
-        //자기 자신 지우기
         Destroy(gameObject);
     }
 

@@ -8,7 +8,6 @@ public abstract class Monster : MonoBehaviour
     protected float speed = 1;
     protected float delay = 1;
     protected bool isVisible = false;
-    protected int score = 100;
     protected float percentage = 0.3f;
     protected Renderer myRenderer;
 
@@ -48,6 +47,12 @@ public abstract class Monster : MonoBehaviour
         {
             enemy.gameObject.GetComponent<Monster>().GetDamage(9999999);
         }
+        GameObject[] eBullet = GameObject.FindGameObjectsWithTag("EBullet");
+        foreach (GameObject bullet in eBullet)
+        {
+            Destroy(bullet);
+        }
+
         GameObject player = null;
         Player playerController = null;
         while(player == null)

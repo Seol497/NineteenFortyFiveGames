@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Timeline;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Monster_5 : Monster
 {      
+    public int score = 100;
     protected override void CreateBullet()
     {
         Instantiate(bullet, ms1.position, Quaternion.identity);

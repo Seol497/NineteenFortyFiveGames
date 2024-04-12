@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -3876846130702612873}
   - component: {fileID: 8476576376863956058}
   m_Layer: 0
-  m_Name: Bomb_Effect_01
+  m_Name: Bomb_Effect_01_P
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   scaleX: 0.005
   scaleY: 0.005
   scaleZ: 0.005
+  isP: 1
 --- !u!58 &-3876846130702612873
 CircleCollider2D:
   m_ObjectHideFlags: 0

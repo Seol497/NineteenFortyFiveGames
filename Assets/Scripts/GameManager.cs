@@ -66,8 +66,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject player;
+
     #endregion
-    private int targetScore = 5000;
+    private int targetScore = 10000;
 
     [Range(0,9999999)] public int score = 0;
     public int goal = 2000;
@@ -88,12 +89,14 @@ public class GameManager : MonoBehaviour
             credits++;
             creditText1.text = $"{credits}";
             creditText2.text = $"{credits}";
-            targetScore += targetScore;
+            targetScore += 10000 + targetScore / 4;
         }
         if ((Input.GetKeyDown(KeyCode.R) && lifes == 0 && credits > 0))
         {
             deadScene.SetActive(false);
             playScene.SetActive(true);
+            currentTime = 10;
+            isCounting = false;
             ResumeGame();
             ReStart();
         }
@@ -109,7 +112,11 @@ public class GameManager : MonoBehaviour
             if (currentTime <= 0)
             {
                 currentTime = 10;
-                isCounting = false;             
+                isCounting = false;
+                Destroy(gameObject);
+                Destroy(uI.gameObject);
+                ResumeGame();
+                SceneManager.LoadScene("Main");
             }
         }
     }
@@ -199,7 +206,8 @@ public class GameManager : MonoBehaviour
         level = 1;
         powerUp = 0;
         bombs = 2;
-        Instantiate(player, player.transform.position, Quaternion.identity);
+        GameObject playerSpawn = GameObject.Find("PlayerSpawn");
+        Instantiate(player, playerSpawn.transform.position, Quaternion.identity);
         if (lifes == 1)
         {
             life1.enabled = false;

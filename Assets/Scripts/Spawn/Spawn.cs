@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SocialPlatforms;
 
@@ -8,11 +9,18 @@ public class Spawn : MonoBehaviour
 {
     GameManager gameManager;
     public GameObject monster_5;
+    public GameObject monster_5_H;
     public GameObject midAirPlan;
+    public bool stage1 = false;
+    public bool stage2 = false;
+
     int score = 0;
     int goal = 0;
-    bool isBossSpawn = false;
     float delay = 1f;
+
+    bool isBossSpawn = false;
+    bool spawnMonster_5 = false;
+    bool spawnMonster_5_H = false;
 
     private void Awake()
     {
@@ -26,8 +34,16 @@ public class Spawn : MonoBehaviour
 
     void Start()
     {
-        //StartCoroutine("Spawn_Meteor");
-        StartCoroutine("Spawn_Monster_5");
+        if (stage2)
+        {
+            stage1 = false;
+            StartCoroutine(Spawn_Monster_5());
+            StartCoroutine(Spawn_Monster_5_H());
+        }
+
+        else if (stage1)
+            StartCoroutine(Spawn_Monster_5());
+
     }
 
     private void Update()
@@ -36,15 +52,24 @@ public class Spawn : MonoBehaviour
         if(score > goal && !isBossSpawn)
         {
             isBossSpawn = true;
-            Spawn_MidAirPlan();          
+            SpawnBoss();          
         }
     }
 
-    void Spawn_MidAirPlan()
+    void SpawnBoss()
     {
-        Vector3 pos = new Vector3(0, 10, 0);
-        delay = 2.5f;
-        Instantiate(midAirPlan, pos, Quaternion.identity);
+        if (stage1)
+        {
+            Vector3 pos = new Vector3(0, 10, 0);
+            Instantiate(midAirPlan, pos, Quaternion.identity);
+            spawnMonster_5 = false;
+            StopCoroutine(Spawn_Monster_5());
+            StartCoroutine(Spawn_Monster_5_H());
+        }
+        if (stage2)
+        {
+
+        }
     }
 
     //IEnumerator Spawn_Meteor()
@@ -120,11 +145,25 @@ public class Spawn : MonoBehaviour
 
     IEnumerator Spawn_Monster_5()
     {
-        while (true)
+        spawnMonster_5 = true;
+        while (spawnMonster_5)
         {
-            Vector3 pos = new Vector3(Random.Range(-2.45f, 2.45f), 10, 0);
+            Vector2 pos = new Vector2(Random.Range(-2.45f, 2.45f), Random.Range(10, 25));
             Instantiate(monster_5, pos, Quaternion.identity);
             yield return new WaitForSeconds(delay);
         }
+        yield break;
+    }
+    IEnumerator Spawn_Monster_5_H()
+    {
+        spawnMonster_5_H = true;
+        while (spawnMonster_5_H)
+        {
+            yield return new WaitForSeconds(0.5f);
+            Vector2 pos = new Vector2(Random.Range(-2.45f, 2.45f), Random.Range(10, 20));
+            Instantiate(monster_5_H, pos, Quaternion.identity);
+            yield return new WaitForSeconds(Random.Range(delay * 3, delay * 6));
+        }
+        yield break;
     }
 }

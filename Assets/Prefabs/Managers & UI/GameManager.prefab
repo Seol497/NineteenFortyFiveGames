@@ -78,8 +78,9 @@ MonoBehaviour:
   item_Bomb: {fileID: 8980997322803056528, guid: 1b35733a2bcdb7e4395cfd1b62c47fa5, type: 3}
   nextSceneName: Stage2
   player: {fileID: 7157102506943936441, guid: a16935191f477884b954a4270c0c5cb5, type: 3}
+  playerSpawn: {fileID: 0}
   score: 0
   goal: 5000
-  level: 4
-  powerUp: 5
+  level: 1
+  powerUp: 0
   bombs: 2
