@@ -1224,7 +1224,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1132018610999025192, guid: c80f7951b73e3894f91a376635a2dca3, type: 3}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 6735103670286039342, guid: cea6e376ff2e5ad439c0105dd3e26bf4, type: 3}
+    - target: {fileID: 1132018610999025192, guid: c80f7951b73e3894f91a376635a2dca3, type: 3}
       propertyPath: stage1
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132018610999025192, guid: c80f7951b73e3894f91a376635a2dca3, type: 3}
+      propertyPath: scoreSpawn
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2511214914502604947, guid: c80f7951b73e3894f91a376635a2dca3, type: 3}

@@ -140,7 +140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1186885176, guid: af8f19b69121a6c4db4c04c4f450789c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -191,6 +191,7 @@ MonoBehaviour:
   explosion: {fileID: 2366330206488807987, guid: c7134f91d5380ea41a6b6b43c8d9e38b, type: 3}
   item_Bomb: {fileID: 8980997322803056528, guid: 1b35733a2bcdb7e4395cfd1b62c47fa5, type: 3}
   item_PowerUp: {fileID: 5922890379028189810, guid: b682f050c29c0354987c1988bd9aa3b8, type: 3}
+  score: 100
 --- !u!61 &5015095221644072299
 BoxCollider2D:
   m_ObjectHideFlags: 0

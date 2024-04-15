@@ -1,16 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.SocialPlatforms;
+
 
 public class Spawn : MonoBehaviour
 {
     GameManager gameManager;
     public GameObject monster_5;
     public GameObject monster_5_H;
-    public GameObject midAirPlan;
+    public GameObject boss;
+    public bool scoreSpawn;
     public bool stage1 = false;
     public bool stage2 = false;
     public bool countDown = false;
@@ -53,7 +51,7 @@ public class Spawn : MonoBehaviour
     private void Update()
     {
         score = gameManager.score;
-        if(score > goal && !isBossSpawn)
+        if(score > goal && !isBossSpawn && scoreSpawn)
         {
             isBossSpawn = true;
             SpawnBoss();          
@@ -66,19 +64,23 @@ public class Spawn : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void SpawnBoss()
+    public void SpawnBoss()
     {
         if (stage1)
         {
             Vector3 pos = new Vector3(0, 10, 0);
-            Instantiate(midAirPlan, pos, Quaternion.identity);
+            Instantiate(boss, pos, Quaternion.identity);
             spawnMonster_5 = false;
             StopCoroutine(Spawn_Monster_5());
             StartCoroutine(Spawn_Monster_5_H());
         }
         if (stage2)
         {
-
+            Vector3 pos = new Vector3(0, 11, 0);
+            Instantiate(boss, pos, Quaternion.identity);
+            delay = 2.5f;
+            StartCoroutine(Spawn_Monster_5_H());
+            StartCoroutine(Spawn_Monster_5());
         }
     }
 
@@ -169,10 +171,10 @@ public class Spawn : MonoBehaviour
         spawnMonster_5_H = true;
         while (spawnMonster_5_H)
         {
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.2f);
             Vector2 pos = new Vector2(Random.Range(-2.45f, 2.45f), Random.Range(10, 20));
             Instantiate(monster_5_H, pos, Quaternion.identity);
-            yield return new WaitForSeconds(Random.Range(delay * 3, delay * 6));
+            yield return new WaitForSeconds(Random.Range(delay * 2.5f, delay * 3.5f));
         }
         yield break;
     }

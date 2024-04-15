@@ -24,63 +24,56 @@ public class GameManager : MonoBehaviour
     }
 
     #region SerializeField 
-    [Header("씬")]
-    [SerializeField]
-    private GameObject uI;
-    [SerializeField]
-    private GameObject deadScene;
-    [SerializeField]
-    private GameObject playScene;
-    [Header("Text")]
-    [SerializeField]
-    private Text creditText1;
-    [SerializeField]
-    private Text creditText2;
-    [SerializeField]
-    private Text countDown;
-    [Header("라이프")]
-    [SerializeField]
-    private Image life1;
-    [SerializeField]
-    private Image life2;
-    [Header("폭탄")]
-    [SerializeField]
-    private Image bomb1;
-    [SerializeField]
-    private Image bomb2;
-    [Header("코인")]
-    [SerializeField]
-    private Image creditImage;
-    [Header("스코어")]
-    [SerializeField]
-    private List<Sprite> score_Sprite;
-    [SerializeField]
-    private List<Image> score_Image;
-    [Header("아이템")]
-    [SerializeField]
-    private GameObject item_PowerUp;
-    [SerializeField]
-    private GameObject item_Bomb;
+    [Header("Scene")]
+    [SerializeField] GameObject uI;
+    [SerializeField] GameObject deadScene;
+    [SerializeField] GameObject playScene;
 
-    public string nextSceneName;
+    [Header("Text")]
+    [SerializeField] Text creditText1;
+    [SerializeField] Text creditText2;
+    [SerializeField] Text countDown;
+
+    [Header("Life")]
+    [SerializeField] Image life1;
+    [SerializeField] Image life2;
+
+    [Header("Bomb")]
+    [SerializeField] Image bomb1;
+    [SerializeField] Image bomb2;
+
+    [Header("Coin")]
+    [SerializeField] Image creditImage;
+
+    [Header("Score")]
+    [SerializeField] List<Sprite> score_Sprite;
+    [SerializeField] List<Image> score_Image;
+
+    [Header("Item")]
+    [SerializeField] GameObject item_PowerUp;
+    [SerializeField] GameObject item_Bomb;
+
 
     [SerializeField]
     private GameObject player;
 
     #endregion
     private int targetScore = 10000;
+    private string nextSceneName;
+    private int SceneCount = 2;
 
     [Range(0,9999999)] public int score = 0;
     public int goal = 2000;
     public int level = 1;
     public int powerUp = 0;
-    public int bombs = 2;
+    public int bombs = 2;   
 
     private int lifes = 3;
     private int credits = 0;
     private float currentTime = 10;
     private bool isCounting = false;
 
+    #region UI
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.RightShift) && credits < 9 && score >= targetScore)
@@ -178,6 +171,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    IEnumerator ShowDeadScene()
+    {
+        yield return new WaitForSeconds(2);
+        playScene.SetActive(false);
+        deadScene.SetActive(true);
+        creditText2.text = $"{credits}";
+        isCounting = true;
+        PauseGame();
+    }
+    #endregion
+
+    #region 플레이어 관련
     public void SpawnItem()
     {
 
@@ -242,22 +247,9 @@ public class GameManager : MonoBehaviour
             StartCoroutine(ShowDeadScene());
         }
     }
+    #endregion
 
-    IEnumerator ShowDeadScene()
-    {
-        yield return new WaitForSeconds(2);
-        playScene.SetActive(false);
-        deadScene.SetActive(true);
-        creditText2.text = $"{credits}";
-        isCounting = true;
-        PauseGame();
-    }
-
-    public void LoadNextScene()
-    {
-        SceneManager.LoadScene(nextSceneName);
-    }
-
+    #region 게임 일시정지/전개
     private void PauseGame()
     {
         Time.timeScale = 0f;
@@ -269,9 +261,18 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         Debug.Log("게임 재개");
     }
+    #endregion
+
+    public void LoadNextScene()
+    {
+        nextSceneName = "Stage" + SceneCount;
+        SceneCount++;
+        SceneManager.LoadScene(nextSceneName);
+    }
+
 
     private void Awake()
-    {
+    {        
         deadScene.gameObject.SetActive(false);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(uI.gameObject);

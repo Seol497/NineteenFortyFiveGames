@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,343 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Boat_Posin3_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64a4a0fe46ccc6440bfddb199fa186c7
+      internalID: -62331693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_1
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 0
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49ac6748e052ad249bef08bc215f588f
+      internalID: -2081807635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc404b0e4ad9a214299584ea80d9eec9
+      internalID: 926366263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_3
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 0
+        width: 27
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baf8a4250d6bf684ab211d4fa565d9b6
+      internalID: 746441967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_4
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 2
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec90053eac6ae640914e88a9a648886
+      internalID: -360427544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_5
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1
+        width: 28
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e916e89a332204daad5bd3983cbec8
+      internalID: 2062780379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_6
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 4
+        width: 30
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5747bb29cb5380f4a9750eced8277404
+      internalID: -642254118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_7
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 3
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92a6b5753629b224ab5d4a5759a1b9f7
+      internalID: 2037048929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_8
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 2
+        width: 26
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6458cea4bb94f504e8b6c67a5fd2bff0
+      internalID: -308609850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_9
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 2
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61c1d78991f5bec42b4dabb431fe023a
+      internalID: 1620219590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_10
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 1
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42828658a0420f740b174d8c34c14d7f
+      internalID: 1863522109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_11
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1
+        width: 28
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d986805373bce3469fa79ce64063c97
+      internalID: -1681568882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_12
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 0
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9fdbff33dc931d4d8ff3b6374a536d3
+      internalID: 1237521505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_13
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 0
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62282643e00f318499ab7be451b01165
+      internalID: 1516214320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_14
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 0
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d300fc73f49149d4a949343277a707be
+      internalID: -1098069757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boat_Posin3_15
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 1
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6f31479a7e70364cbd346797060e351
+      internalID: -1669001368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +481,23 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Boat_Posin3_0: -62331693
+      Boat_Posin3_1: -2081807635
+      Boat_Posin3_10: 1863522109
+      Boat_Posin3_11: -1681568882
+      Boat_Posin3_12: 1237521505
+      Boat_Posin3_13: 1516214320
+      Boat_Posin3_14: -1098069757
+      Boat_Posin3_15: -1669001368
+      Boat_Posin3_2: 926366263
+      Boat_Posin3_3: 746441967
+      Boat_Posin3_4: -360427544
+      Boat_Posin3_5: 2062780379
+      Boat_Posin3_6: -642254118
+      Boat_Posin3_7: 2037048929
+      Boat_Posin3_8: -308609850
+      Boat_Posin3_9: 1620219590
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

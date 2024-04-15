@@ -1,30 +1,82 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class Stage02Event : MonoBehaviour
 {
     public GameObject dangerous;
     public GameObject explosion;
+    public Spawn spawn;
 
     private GameObject target;
 
     private int plus = 0;
-    private float countTime = 20f;
+    public float countTime = 20f;
+    private float maxcountTime;
     private int difficult = 1;
     private float delay = 2f;
 
     private bool explosiveEnd;
 
     private List<Vector2> pos = new List<Vector2>();
+
+    private BackGround background;
+
     private void Start()
     {
+        background = GameObject.Find("BackGround").GetComponent<BackGround>();
         StartCoroutine(Warning());
+    }
+
+    IEnumerator ChangeAnimation()
+    {
+        GameObject player = null;
+        while (player == null)
+        {
+            player = GameObject.FindGameObjectWithTag("Player");
+            yield return null;
+        }
+        float elapsedTime = 0f;
+        float duration = 5f;
+        Vector3 playerstartScale = player.transform.localScale;
+        Vector3 targetScale = new Vector3(1f, 0.5f, 1f);
+        StartCoroutine(background.TranslateBackGround(elapsedTime, duration));
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            Vector3 newScale = Vector3.Lerp(playerstartScale, targetScale, t);
+
+            player.transform.localScale = newScale;
+
+            yield return null;
+        }
+        player.transform.localScale = targetScale;
+        yield return new WaitForSeconds(0.1f);
+        playerstartScale = player.transform.localScale;
+        elapsedTime = 0f;
+        duration = 2f;
+        targetScale = new Vector3(1f, 1f, 1f);
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / duration);
+
+            Vector3 newScale = Vector3.Lerp(playerstartScale, targetScale, t);
+
+            player.transform.localScale = newScale;
+
+            yield return null;
+        }
+        player.transform.localScale = targetScale;
+        yield return new WaitForSeconds(1.4f);
+        spawn.SpawnBoss();
     }
 
     IEnumerator Warning()
     {
+        maxcountTime = countTime;
         yield return new WaitForSeconds(7f);
         while (countTime > 0)
         {
@@ -70,13 +122,14 @@ public class Stage02Event : MonoBehaviour
                 if (difficult >= 8)
                     plus++;
                 delay -= 0.195f;
-                countTime = 20 - difficult;
+                countTime = maxcountTime - difficult;
             }
             if (difficult >= 10)
                 countTime = 0;
             yield return new WaitForSeconds(delay);
             pos.Clear();
         }
+        StartCoroutine(ChangeAnimation());
     }
     IEnumerator Explos(int i)
     {
@@ -86,4 +139,5 @@ public class Stage02Event : MonoBehaviour
         if (i == difficult + plus - 1)
             explosiveEnd = true;
     }
+
 }
