@@ -11,8 +11,6 @@ public class Monster_5 : Monster
     {
         Instantiate(bullet, ms1.position, Quaternion.identity);
         Instantiate(bullet, ms2.position, Quaternion.identity);
-
-        //¿Á±Õ»£√‚
         Invoke("CreateBullet", delay);
     }   
 

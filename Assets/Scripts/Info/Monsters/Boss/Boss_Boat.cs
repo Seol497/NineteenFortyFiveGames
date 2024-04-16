@@ -17,6 +17,7 @@ public class Boss_Boat : Monster
     public GameObject explosion2;
     public GameObject explosion3;
     public GameObject explosion4;
+    public GameObject Phase2;
 
     private float delay1 = 0.9f;
     private float delay2 = 2.5f;
@@ -29,7 +30,7 @@ public class Boss_Boat : Monster
     private bool skill = false;
     private void Awake()
     {
-        hp = 100000;
+        hp = 200000;
         myRenderer = GetComponent<Renderer>();
     }
 
@@ -190,7 +191,7 @@ public class Boss_Boat : Monster
             SpawnItem(0.7f);
         GameManager.Instance.Score(5000);
         Destroy(gameObject);
-        AllDestory();
+        Instantiate(Phase2, transform.position, Quaternion.identity);
         yield break;
     }
 

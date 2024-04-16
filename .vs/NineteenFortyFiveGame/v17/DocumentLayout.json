@@ -3,16 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\assets\\scripts\\info\\monsters\\boss\\boss_midairplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\monsters\\boss\\boss_midairplan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|c:\\users\\seo\\desktop\\unity project\\04\\nineteenfortyfivegame\\assets\\scripts\\lookatplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\lookatplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\assets\\scripts\\info\\monsters\\boss\\boss_boat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\monsters\\boss\\boss_boat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\assets\\scripts\\info\\monsters\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\monsters\\monster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\assets\\scripts\\info\\monsters\\midairplan_1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\info\\monsters\\midairplan_1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{90CA115A-8692-68E3-5E07-A9F157E19D1C}|Assembly-CSharp.csproj|C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\assets\\scripts\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -26,59 +22,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "GameManager.cs",
               "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\GameManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\GameManager.cs",
               "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\GameManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\GameManager.cs",
-              "ViewState": "AQIAALgAAAAAAAAAAABUwAgBAAAAAAAA",
+              "ViewState": "AQIAALQAAAAAAAAAAAAUwBwBAABRAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T02:05:25.472Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Monster.cs",
-              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\Monster.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Monsters\\Monster.cs",
-              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\Monster.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Info\\Monsters\\Monster.cs",
-              "ViewState": "AQIAAFAAAAAAAAAAAAAuwGMAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T07:51:46.724Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Boss_MidAirPlan.cs",
-              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_MidAirPlan.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_MidAirPlan.cs",
-              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_MidAirPlan.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_MidAirPlan.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAswBMAAAAQAAAA",
+              "Title": "LookAtPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\LookAtPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\LookAtPlayer.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\LookAtPlayer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\LookAtPlayer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T07:52:05.602Z",
+              "WhenOpened": "2024-04-16T08:48:15.422Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Boss_Boat.cs",
-              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_Boat.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_Boat.cs",
-              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_Boat.cs",
-              "RelativeToolTip": "Assets\\Scripts\\Info\\Monsters\\Boss\\Boss_Boat.cs",
-              "ViewState": "AQIAAGoAAAAAAAAAAIAwwHgAAAAYAAAA",
+              "Title": "MidAirPlan_1.cs",
+              "DocumentMoniker": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\MidAirPlan_1.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Info\\Monsters\\MidAirPlan_1.cs",
+              "ToolTip": "C:\\Users\\seo\\Desktop\\unity project\\04\\NineteenFortyFiveGame\\Assets\\Scripts\\Info\\Monsters\\MidAirPlan_1.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Info\\Monsters\\MidAirPlan_1.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAuwDQAAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T07:39:00.447Z",
+              "WhenOpened": "2024-04-16T08:03:55.801Z",
               "EditorCaption": ""
             }
           ]

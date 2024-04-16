@@ -147,9 +147,9 @@ public class Spawn : MonoBehaviour
     //            GameObject[] meteorObjects = GameObject.FindGameObjectsWithTag("Meteor");
     //            int how = Random.Range(1, 5);
     //            for (int i = 0; i < how; i++)
-    //            {                   
+    //            {
     //                int much = Random.Range(0, count);
-    //                Destroy(meteorObjects[much]);     
+    //                Destroy(meteorObjects[much]);
     //            }
     //        }
     //        otpos = 0f;
