@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 3 + powerUp; i++)
         {
             Instantiate(bullet[bulletLv + 1], pos[0].position, Quaternion.identity);
             if (level >= 2)
@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {       
-        if ((collision.gameObject.CompareTag("EBullet") || collision.gameObject.CompareTag("EBomb")) && !isDead && !isInvincible)
+        if ((collision.gameObject.CompareTag("EBullet") || collision.gameObject.CompareTag("EBomb")) && !isDead && !isInvincible && isPlaying)
         {
             isDead = true;
             foreach (Collider2D collider in colliders)

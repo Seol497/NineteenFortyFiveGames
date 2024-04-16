@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -62,56 +63,63 @@ public class GameManager : MonoBehaviour
     private string nextSceneName;
     private int SceneCount = 2;
 
-    [Range(0,9999999)] public int score = 0;
+    [Range(0, 9999999)] public int score = 0;
     public int goal = 2000;
     public int level = 1;
     public int powerUp = 0;
-    public int bombs = 2;   
+    public int bombs = 2;
 
     private int lifes = 3;
     private int credits = 0;
     private float currentTime = 10;
     private bool isCounting = false;
+    private bool gameStart = false;
+    private bool easy = false;
+
 
     #region UI
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift) && credits < 9 && score >= targetScore)
+        if (gameStart)
         {
-            creditImage.enabled = true;
-            credits++;
-            creditText1.text = $"{credits}";
-            creditText2.text = $"{credits}";
-            targetScore += 10000 + targetScore / 4;
-        }
-        if ((Input.GetKeyDown(KeyCode.R) && lifes == 0 && credits > 0))
-        {
-            deadScene.SetActive(false);
-            playScene.SetActive(true);
-            currentTime = 10;
-            isCounting = false;
-            ResumeGame();
-            ReStart();
-        }
-        if (isCounting)
-        {
-
-            currentTime -= Time.unscaledDeltaTime;
-
-            // UI에 시간 표시
-            countDown.text = Mathf.CeilToInt(currentTime).ToString();
-
-            // 시간이 0이 되면 카운트다운 종료
-            if (currentTime <= 0)
+            if (Input.GetKeyDown(KeyCode.RightShift) && credits < 9 && (easy || score >= targetScore))
             {
+                creditImage.enabled = true;
+                credits++;
+                creditText1.text = $"{credits}";
+                creditText2.text = $"{credits}";
+                targetScore += 10000 + targetScore / 4;
+            }
+            if ((Input.GetKeyDown(KeyCode.R) && lifes == 0 && credits > 0))
+            {
+                deadScene.SetActive(false);
+                playScene.SetActive(true);
                 currentTime = 10;
                 isCounting = false;
-                Destroy(gameObject);
-                Destroy(uI.gameObject);
                 ResumeGame();
-                SceneManager.LoadScene("Main");
+                ReStart();
+            }
+            if (isCounting)
+            {
+
+                currentTime -= Time.unscaledDeltaTime;
+
+                // UI에 시간 표시
+                countDown.text = Mathf.CeilToInt(currentTime).ToString();
+
+                // 시간이 0이 되면 카운트다운 종료
+                if (currentTime <= 0)
+                {
+                    currentTime = 10;
+                    isCounting = false;
+                    Destroy(gameObject);
+                    Destroy(uI.gameObject);
+                    ResumeGame();
+                    SceneManager.LoadScene("Main");
+                }
             }
         }
+
     }
 
     public void Score(int num)
@@ -267,13 +275,22 @@ public class GameManager : MonoBehaviour
     {
         nextSceneName = "Stage" + SceneCount;
         SceneCount++;
-        SceneManager.LoadScene(nextSceneName);
+        SceneManager.LoadScene(nextSceneName, LoadSceneMode.Single);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameObject playerSpawn = GameObject.Find("PlayerSpawn");
+        Instantiate(player, playerSpawn.transform.position, Quaternion.identity);
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
 
     private void Awake()
-    {        
-        deadScene.gameObject.SetActive(false);
+    {
+        deadScene.SetActive(false);
+        playScene.SetActive(false);
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(uI.gameObject);
 
@@ -296,7 +313,7 @@ public class GameManager : MonoBehaviour
             creditText2.text = "0";
             creditImage.enabled = false;
         }
-        foreach(Image image in score_Image)
+        foreach (Image image in score_Image)
         {
             image.enabled = false;
         }
@@ -304,11 +321,12 @@ public class GameManager : MonoBehaviour
         score_Image[0].sprite = score_Sprite[0];
     }
 
-
-
-
-
-
-
+    public void GameStart(bool difficulty)
+    {
+        easy = difficulty;
+        playScene.SetActive(true);
+        gameStart = true;
+        Live();
+    }
 
 }

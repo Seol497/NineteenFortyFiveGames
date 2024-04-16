@@ -38,7 +38,7 @@ public class Expolision : MonoBehaviour
             }
             if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Boss"))
             {
-                collision.gameObject.GetComponent<Monster>().GetDamage(2000);
+                collision.gameObject.GetComponent<Monster>().GetDamage(10000);
             }
         }
     }

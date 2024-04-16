@@ -1,13 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Boss_Boat : Monster
 {
-    public Transform CP1;
-    public Transform CP2;
-    public Transform CP3;
+    public List<Transform> CP;
     public Transform MS_HR;
     public Transform MS_HL;
     public Transform MS_SH_R1;
@@ -22,11 +19,14 @@ public class Boss_Boat : Monster
     public GameObject explosion4;
 
     private float delay1 = 0.9f;
-    private float delay2 = 1.6f;
-    private float delay3 = 20f;
-    private float delay4 = 25f;
+    private float delay2 = 2.5f;
+    private float delay3 = 12f;
+    private float delay4 = 10f;
+    private int level = 1;
+    int count = 30;
 
     private bool isDead = true;
+    private bool skill = false;
     private void Awake()
     {
         hp = 100000;
@@ -44,8 +44,28 @@ public class Boss_Boat : Monster
         {
             StartCoroutine(Dead());
         }
-        Debug.Log(hp);
-    }
+        if (hp <= 70000 && level == 1)
+        {
+            level++;
+            count = 35;
+            StartCoroutine(CicleFire(1));
+            delay4 = 8f;
+        }
+        if (hp <= 20000 && level == 2)
+        {
+            level++;
+            skill = true;
+            count = 40;
+            StartCoroutine(CicleFire(2));
+            StopCoroutine(CreateBullets());
+            StopCoroutine(CreateBullet_SH());
+            StopCoroutine(CreateBullet_UH());
+            GameObject spawn = GameObject.Find("SpawnManager");
+            spawn.SetActive(false);
+            delay4 = 0.5f;
+        }
+}
+
 
     #region 총 발사
     protected override void CreateBullet()
@@ -53,12 +73,12 @@ public class Boss_Boat : Monster
         StartCoroutine(CreateBullets());
         StartCoroutine(CreateBullet_SH());
         StartCoroutine(CreateBullet_UH());
-        StartCoroutine(CicleFire());
+        StartCoroutine(CicleFire(0));
     }
 
     IEnumerator CreateBullets()
     {
-        while (!isDead)
+        while (!isDead && !skill)
         {
             Instantiate(bullet, ms1.position, Quaternion.identity);
             Instantiate(bullet, ms2.position, Quaternion.identity);
@@ -69,7 +89,7 @@ public class Boss_Boat : Monster
 
     IEnumerator CreateBullet_SH()
     {
-        while (!isDead)
+        while (!isDead && !skill)
         {
             Instantiate(Bullet_SH, MS_SH_R1.position, Quaternion.identity);
             Instantiate(Bullet_SH, MS_SH_R2.position, Quaternion.identity);
@@ -81,7 +101,7 @@ public class Boss_Boat : Monster
 
     IEnumerator CreateBullet_UH()
     {
-        while (!isDead)
+        while (!isDead && !skill)
         {
             Instantiate(Bullet_UH, MS_HR.position, Quaternion.identity);
             Instantiate(Bullet_UH, MS_HL.position, Quaternion.identity);
@@ -90,30 +110,45 @@ public class Boss_Boat : Monster
         }
     }
 
-    IEnumerator CicleFire()
+    IEnumerator CicleFire(int num)
     {
-        int count = 30;
-        //발사체 사이의 각도
-        float intervalAngle = 360 / count;
         //가중되는 각도(항상 같은 위치로 발사하지 않도록 설정
         float weightAngle = 0f;
 
         //원 형태로 방사하는 발사체 생성(count 갯수 만큼)
         while (!isDead)
         {
-            for (int i = 0; i < count; ++i)
+            for (int j = 0; j < count; ++j)
             {
                 //발사체 생성
-                GameObject clone = Instantiate(BossBullet, CP1.position, Quaternion.identity);
+                GameObject clone = Instantiate(BossBullet, CP[num].position, Quaternion.identity);
 
                 //발사체 이동 방향(각도)
-                float angle = weightAngle + intervalAngle * i;
+                float angle = weightAngle + 360 / count * j;
+
                 //발사체 이동 방향(벡터)
                 //Cos(각도)라디안 단위의 각도 표현을 위해  pi/ 180 을 곱함
                 float x = Mathf.Cos(angle * Mathf.Deg2Rad);
                 //sin(각도)라디안 단위의 각도 표현을 위해 PI/100을 곱함
                 float y = Mathf.Sin(angle * Mathf.Deg2Rad);
+                if(num == 1) { x = -x; }
+                if(num == 2)
+                {                    
+                    switch (Random.Range(0, 3))
+                    {
+                        case 0:
+                            x = -x;
+                            break;
+                        case 1:
+                            y = -y;
+                            break;
+                        case 2:
+                            x = -x;
+                            y = -y;
+                            break;
 
+                    }
+                }
 
                 //발사체 이동 방향 설정
                 clone.GetComponent<BossBullet>().Move(new Vector2(x, y));
@@ -125,7 +160,7 @@ public class Boss_Boat : Monster
             weightAngle += 1;
 
             //3초마다 미사일 발사
-            yield return new WaitForSeconds(delay4);
+            yield return new WaitForSeconds(Random.Range(delay4, delay4 + 1));
         }
     }
     #endregion
@@ -181,7 +216,7 @@ public class Boss_Boat : Monster
     }
 
     void Start()
-    {
+    {        
         StartCoroutine(MoveObject());   
     }
 

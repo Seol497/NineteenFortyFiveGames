@@ -90,12 +90,12 @@ public abstract class Monster : MonoBehaviour
         float randomValue = Random.value;
 
         // 생성 확률과 비교하여 GameObject 생성 여부 결정
-        if (randomValue < percentage)
+        if (randomValue * 3 < percentage)
         {
             // 확률에 따라 GameObject 생성
             Instantiate(item_Bomb, transform.position, Quaternion.identity);
         }
-        if (randomValue * 3 < percentage)
+        if (randomValue * 2 < percentage)
         {
             Instantiate(item_PowerUp, transform.position, Quaternion.identity);
         }

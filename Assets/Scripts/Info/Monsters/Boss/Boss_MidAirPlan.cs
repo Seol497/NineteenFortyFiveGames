@@ -17,7 +17,7 @@ public class MidAirPlan : Monster
 
     private void Awake()
     {
-        hp = 15000;
+        hp = 100000;
         myRenderer = GetComponent<Renderer>();
         pattern = hp / 2;
     }

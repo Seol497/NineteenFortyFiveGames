@@ -44,7 +44,7 @@ public class Spawn : MonoBehaviour
             StartCoroutine(Spawn_Monster_5());
         if (countDown)
         {
-            StartCoroutine(OffSpawnManager());
+            Invoke("OffSpawnManager", countdownTimer);
         }
     }
 
@@ -58,10 +58,12 @@ public class Spawn : MonoBehaviour
         }
     }
 
-    private IEnumerator OffSpawnManager()
+    public void OffSpawnManager()
     {
-        yield return new WaitForSeconds(countdownTimer);
-        gameObject.SetActive(false);
+        spawnMonster_5 = false;
+        spawnMonster_5 = false;
+        StopCoroutine(Spawn_Monster_5());
+        StopCoroutine(Spawn_Monster_5_H());
     }
 
     public void SpawnBoss()
@@ -78,7 +80,7 @@ public class Spawn : MonoBehaviour
         {
             Vector3 pos = new Vector3(0, 11, 0);
             Instantiate(boss, pos, Quaternion.identity);
-            delay = 2.5f;
+            delay = 4f;
             StartCoroutine(Spawn_Monster_5_H());
             StartCoroutine(Spawn_Monster_5());
         }

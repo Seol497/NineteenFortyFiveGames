@@ -23,15 +23,6 @@ public class BossBullet : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.tag == "Player")
-        {
-            //미사일지움
-            Destroy(gameObject);
-        }
-    }
-
 
 
 

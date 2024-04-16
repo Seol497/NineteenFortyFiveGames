@@ -10,6 +10,7 @@ using static UnityEngine.EventSystems.StandaloneInputModule;
 
 public class StartManager : MonoBehaviour
 {
+    public GameObject selectDifficulty;
     public RawImage fir;
     public RawImage main;
     public RawImage sub;
@@ -35,8 +36,9 @@ public class StartManager : MonoBehaviour
     private bool left = false;
     private bool right = false;
     private bool fade;
+    private bool diffcult;
 
-    private float countdownTimer = 12f;
+    private float countdownTimer = 14f;
 
     private string secretCode = "À§À§¾Æ·¡¾Æ·¡¿Þ¿À¿Þ¿ÀAB";
     private string inputCode = "";
@@ -128,13 +130,13 @@ public class StartManager : MonoBehaviour
 
     void Start()
     {
-        fir.gameObject.SetActive(true);
+        selectDifficulty.SetActive(true);
+        fir.gameObject.SetActive(false);
         main.gameObject.SetActive(false);
         sub.gameObject.SetActive(false);
         select.gameObject.SetActive(false);
         fadeImage.gameObject.SetActive(false);
-        Hidden.gameObject.SetActive(false);
-        Invoke("TurnUp", 0.5f);
+        Hidden.gameObject.SetActive(false);      
     }
 
     private void Select(int num)
@@ -180,7 +182,17 @@ public class StartManager : MonoBehaviour
     }
     private void LoadNextScene()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("Stage1", LoadSceneMode.Single);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Stage1")
+        {
+            GameManager.Instance.GameStart(diffcult);
+        }
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     // ±î¸ÅÁü
@@ -246,5 +258,12 @@ public class StartManager : MonoBehaviour
     {
         fir.gameObject.SetActive(false);
         main.gameObject.SetActive(true);
+    }
+
+    public void OnButton(bool difficulty)
+    {
+        diffcult = difficulty;
+        fir.gameObject.SetActive(true);
+        Invoke("TurnUp", 0.5f);
     }
 }
