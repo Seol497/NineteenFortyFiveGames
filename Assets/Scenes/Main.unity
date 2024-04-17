@@ -1178,6 +1178,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1446687109}
     - target: {fileID: 7204478766723542501, guid: 65dce2f2da14bc04795eb3b74d917811, type: 3}
+      propertyPath: players
+      value: 
+      objectReference: {fileID: 7157102506943936441, guid: a16935191f477884b954a4270c0c5cb5, type: 3}
+    - target: {fileID: 7204478766723542501, guid: 65dce2f2da14bc04795eb3b74d917811, type: 3}
       propertyPath: countDown
       value: 
       objectReference: {fileID: 1446687111}

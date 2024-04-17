@@ -104,7 +104,8 @@ public class Player : MonoBehaviour
     IEnumerator BlinkAlpha()
     {
         float elapsedTime = 0f;
-
+        isDead = true;
+        isPlaying = false;
         while (elapsedTime < 1.5f)
         {
             isBlinking = !isBlinking; // 깜빡임 상태 변경
@@ -128,7 +129,7 @@ public class Player : MonoBehaviour
         Color originalColor = myRenderer.material.color;
         originalColor.a = 1f;
         myRenderer.material.color = originalColor;
-        isInvincible = false;
+        isDead = false;
         yield break;
     }  
 
@@ -168,7 +169,7 @@ public class Player : MonoBehaviour
 
             GameManager.Instance.SpawnItem();
             GameManager.Instance.Dead();
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
         if (collision.gameObject.CompareTag("PowerItem"))
@@ -196,21 +197,24 @@ public class Player : MonoBehaviour
     {
         myRenderer = GetComponent<Renderer>();
         colliders = GetComponentsInChildren<Collider2D>();
-        ani = GetComponent<Animator>();
+        ani = GetComponent<Animator>();        
+    }
+
+    void Start()
+    {
+        isShoot = false;
+        isDesh = false;
+        summonCount = 0;
         level = GameManager.Instance.level;
         powerUp = GameManager.Instance.powerUp;
         bomb = GameManager.Instance.bombs;
-        for(int i = 0; i < powerUp - 1; i++)
-            bulletLv += 2;    
+        for (int i = 0; i < powerUp - 1; i++)
+            bulletLv += 2;
         if (powerUp == 1)
             bulletLv = 1;
         if (powerUp >= 4)
             helperLv = 4;
         LevelUp();
-    }
-
-    void Start()
-    {
         StartCoroutine(BlinkAlpha());
     }
 
@@ -282,6 +286,11 @@ public class Player : MonoBehaviour
             Vector3 worldPos = Camera.main.ViewportToWorldPoint(viewPos);//다시월드좌표로 변환
             transform.position = worldPos; //좌표를 적용한다.
         }
+    }
+
+    void OnEnable()
+    {
+        Start();
     }
 
 }

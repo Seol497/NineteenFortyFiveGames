@@ -56,7 +56,9 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject player;
+    private GameObject players;
+    GameObject player;
+    GameObject playerSpawn;
 
     #endregion
     private int targetScore = 10000;
@@ -219,8 +221,8 @@ public class GameManager : MonoBehaviour
         level = 1;
         powerUp = 0;
         bombs = 2;
-        GameObject playerSpawn = GameObject.Find("PlayerSpawn");
-        Instantiate(player, playerSpawn.transform.position, Quaternion.identity);
+        player.gameObject.SetActive(true);
+        player.transform.position = playerSpawn.transform.position;
         if (lifes == 1)
         {
             life1.enabled = false;
@@ -236,6 +238,14 @@ public class GameManager : MonoBehaviour
         }
         bomb1.enabled = true;
         bomb2.enabled = true;
+    }
+
+    void SpawnPlayer()
+    {
+        playerSpawn = GameObject.Find("PlayerSpawn");
+        player = Instantiate(players,  playerSpawn.transform.position, Quaternion.identity);
+        Live();
+        DontDestroyOnLoad(player);
     }
 
     public void Dead()
@@ -281,8 +291,8 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        GameObject playerSpawn = GameObject.Find("PlayerSpawn");
-        Instantiate(player, playerSpawn.transform.position, Quaternion.identity);
+        playerSpawn = GameObject.Find("PlayerSpawn");
+        player.transform.position = playerSpawn.transform.position;
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
@@ -326,7 +336,7 @@ public class GameManager : MonoBehaviour
         easy = difficulty;
         playScene.SetActive(true);
         gameStart = true;
-        Live();
+        SpawnPlayer();
     }
 
 }

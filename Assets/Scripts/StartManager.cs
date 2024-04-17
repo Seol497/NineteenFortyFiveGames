@@ -31,6 +31,7 @@ public class StartManager : MonoBehaviour
 
     [Range(-1, 6)] private int characterCount = 0;
 
+    private bool isDifficulty = false;
     private bool isIncert = false;
     private bool isStart = false;
     private bool left = false;
@@ -45,7 +46,7 @@ public class StartManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightShift) && !isIncert)
+        if (Input.GetKeyDown(KeyCode.RightShift) && !isIncert && isDifficulty)
         {
             StartCoroutine(FadeOut(main));
             StartCoroutine(FadeIn(sub));
@@ -264,6 +265,7 @@ public class StartManager : MonoBehaviour
     {
         diffcult = difficulty;
         fir.gameObject.SetActive(true);
+        isDifficulty = true;
         Invoke("TurnUp", 0.5f);
     }
 }
